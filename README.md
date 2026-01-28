@@ -35,73 +35,63 @@ node test.js problem-name
 ```
 
 ## 🗂️ Problem Categories (206 Total)
+*Each category is organized by difficulty: Easy → Medium → Hard*
 
 ### 00-warmup (6 problems)
 Build confidence with JavaScript fundamentals
-- `find-maximum` - Array traversal basics
-- `count-occurrences` - Frequency counting
-- `reverse-array` - In-place manipulation
-- `sum-array` - Basic aggregation
-- `count-vowels` - String processing
-- `find-duplicates-basic` - Hash set usage
+- **Easy (6)**: `easy-01-count-occurrences` through `easy-06-sum-array`
 
 ### 01-two-pointers (27 problems)
 Master pointer manipulation techniques
-- `reverse-string` - Opposite direction pointers
-- `is-palindrome` - String validation
-- `two-sum-sorted` - Sorted array optimization
-- `three-sum` - Fixed + two pointers
-- `container-most-water` - Greedy optimization
+- **Easy (12)**: `easy-01-backspace-string-compare` through `easy-12-valid-palindrome-ii`
+- **Medium (12)**: `medium-01-boats-to-save-people` through `medium-12-two-sum-sorted`
+- **Hard (3)**: `hard-01-minimum-window-substring` through `hard-03-trapping-rain-water`
 
 ### 02-sliding-window (25 problems)
 Perfect subarray/substring problems
-- `max-sum-subarray-k` - Fixed window
-- `longest-substring-no-repeat` - Variable window
-- `permutation-in-string` - Pattern matching
-- `minimum-window-substring` - Advanced optimization
+- **Easy (4)**: `easy-01-average-subarrays-k` through `easy-04-max-sum-subarray-k`
+- **Medium (17)**: `medium-01-character-replacement` through `medium-17-substrings-k-distinct`
+- **Hard (4)**: `hard-01-count-subarrays-k-different` through `hard-04-sliding-window-median`
 
 ### 03-hash-maps (30 problems)
 Optimize with O(1) lookups
-- `two-sum` - Classic hash map usage
-- `group-anagrams` - Grouping patterns
-- `top-k-frequent` - Frequency analysis
-- `lru-cache` - Advanced data structure design
+- **Easy (18)**: `easy-01-contains-duplicate` through `easy-18-word-pattern`
+- **Medium (12)**: `medium-01-brick-wall` through `medium-12-valid-sudoku`
 
 ### 04-fast-slow-pointers (15 problems)
 Solve cycle and middle-finding problems
-- `linked-list-cycle` - Floyd's algorithm
-- `middle-linked-list` - Finding middle elements
-- `palindrome-linked-list` - Advanced list operations
+- **Easy (6)**: `easy-01-happy-number` through `easy-06-remove-duplicates-sorted`
+- **Medium (8)**: `medium-01-circular-array-loop` through `medium-08-sort-list`
+- **Hard (1)**: `hard-01-reverse-nodes-k-group`
 
 ### 05-stack (20 problems)
 Master LIFO operations
-- `valid-parentheses` - Matching problems
-- `daily-temperatures` - Monotonic stack
-- `largest-rectangle-histogram` - Advanced optimization
+- **Easy (9)**: `easy-01-backspace-string-compare` through `easy-09-valid-parentheses`
+- **Medium (9)**: `medium-01-asteroid-collision` through `medium-09-validate-stack-sequences`
+- **Hard (2)**: `hard-01-basic-calculator`, `hard-02-largest-rectangle-histogram`
 
 ### 06-binary-search (15 problems)
 Optimize search problems
-- `binary-search` - Basic implementation
-- `search-rotated-sorted-array` - Modified conditions
-- `koko-eating-bananas` - Search on answer space
+- **Easy (5)**: `easy-01-binary-search` through `easy-05-sqrt-x`
+- **Medium (9)**: `medium-01-capacity-ship-packages` through `medium-09-time-based-key-value`
+- **Hard (1)**: `hard-01-split-array-largest-sum`
 
 ### 07-recursion (15 problems)
 Build recursive thinking
-- `factorial` - Basic recursion
-- `binary-tree-inorder` - Tree traversal
-- `generate-parentheses` - Backtracking
+- **Easy (13)**: `easy-01-binary-tree-inorder` through `easy-13-symmetric-tree`
+- **Medium (2)**: `medium-01-generate-parentheses`, `medium-02-validate-binary-search-tree`
 
 ### 08-dynamic-programming (20 problems)
 Solve optimization problems
-- `climbing-stairs` - 1D DP fundamentals
-- `coin-change` - Unbounded knapsack
-- `edit-distance` - 2D string DP
+- **Easy (5)**: `easy-01-best-time-buy-sell-stock` through `easy-05-range-sum-query`
+- **Medium (14)**: `medium-01-coin-change` through `medium-14-word-break`
+- **Hard (1)**: `hard-01-edit-distance`
 
 ### 09-mixed-practice (33 problems)
 Interview simulation and pattern combinations
-- **Easy (15)**: Pattern combinations
-- **Medium (13)**: Multi-step algorithms
-- **Hard (5)**: Advanced interview problems
+- **Easy (15)**: `easy-01-merge-sorted-arrays-easy` through `easy-15-find-disappeared-numbers`
+- **Medium (8)**: `medium-01-product-except-self` through `medium-08-merge-intervals`
+- **Hard (10)**: `hard-01-median-two-sorted-arrays` through `hard-10-alien-dictionary`
 
 ## 🏃 Daily Routine
 
@@ -148,9 +138,9 @@ Interview simulation and pattern combinations
 
 ## 🔥 Ready to Start?
 
-1. **First problem:** `find-maximum` (warmup)
-2. **Create solution:** `solutions/find-maximum.js`
-3. **Test it:** `node test.js find-maximum`
+1. **First problem:** `easy-01-find-maximum` (warmup)
+2. **Create solution:** `solutions/easy-01-find-maximum.js`
+3. **Test it:** `node test.js easy-01-find-maximum`
 4. **Track progress:** Update `PATTERN_MASTERY_TRACKER.md`
 5. **Follow guides:** Use `PROBLEM_SOLVING_GUIDE.md` for every problem
 
