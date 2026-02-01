@@ -34,8 +34,10 @@ export function functionName(param1, param2) {
 node test.js problem-name
 ```
 
-## 🗂️ Problem Categories (206 Total)
+## 🗂️ Problem Categories (300+ Total)
 *Each category is organized by difficulty: Easy → Medium → Hard*
+
+## 🎯 Core Algorithm Practice (Original 206 Problems)
 
 ### 00-warmup (6 problems)
 Build confidence with JavaScript fundamentals
@@ -93,6 +95,44 @@ Interview simulation and pattern combinations
 - **Medium (8)**: `medium-01-product-except-self` through `medium-08-merge-intervals`
 - **Hard (10)**: `hard-01-median-two-sorted-arrays` through `hard-10-alien-dictionary`
 
+## 🚀 Advanced Interview Practice (New 100+ Problems)
+
+### TypeScript API Practice (18 problems)
+Master API development for backend interviews like Clipboard Health
+- **Easy (5)**: `easy-01-basic-fetch` through `easy-05-response-parsing`
+- **Medium (8)**: `medium-01-error-handling` through `medium-08-caching-strategy`
+- **Hard (5)**: `hard-01-concurrent-requests` through `hard-05-performance-optimization`
+
+### React Interview Practice (22 problems)
+Frontend interview patterns and modern React
+- **Easy (6)**: `easy-01-use-counter-hook` through `easy-06-event-handling`
+- **Medium (10)**: `medium-01-use-debounce-hook` through `medium-10-dynamic-imports`
+- **Hard (6)**: `hard-01-use-async-hook` through `hard-06-custom-hook-library`
+
+### Testing Practice (19 problems)
+Test-driven development and quality assurance
+- **Easy (6)**: `easy-01-basic-jest-test` through `easy-06-async-testing`
+- **Medium (8)**: `medium-01-mock-functions` through `medium-08-snapshot-testing`
+- **Hard (5)**: `hard-01-test-suite-runner` through `hard-05-testing-library-design`
+
+### System Design Practice (19 problems)
+Scalability and architectural patterns
+- **Easy (6)**: `easy-01-cache-implementation` through `easy-06-queue-implementation`
+- **Medium (8)**: `medium-01-rate-limiter` through `medium-08-consistent-hashing`
+- **Hard (5)**: `hard-01-distributed-cache` through `hard-05-microservice-orchestration`
+
+### Performance Optimization (19 problems)
+High-performance application development
+- **Easy (6)**: `easy-01-memoization` through `easy-06-array-optimization`
+- **Medium (8)**: `medium-01-lru-cache-optimization` through `medium-08-memory-leak-prevention`
+- **Hard (5)**: `hard-01-algorithm-complexity-analysis` through `hard-05-real-time-optimization`
+
+### Real World Scenarios (19 problems)
+Complete features and application development
+- **Easy (6)**: `easy-01-todo-list-manager` through `easy-06-user-preferences`
+- **Medium (8)**: `medium-01-chat-application` through `medium-08-analytics-dashboard`
+- **Hard (5)**: `hard-01-social-media-feed` through `hard-05-trading-platform`
+
 ## 🏃 Daily Routine
 
 1. **Warm-up** (10 mins): Review yesterday's problem
@@ -134,7 +174,37 @@ Interview simulation and pattern combinations
 | Algorithms | Recursion + Dynamic Programming | 35 problems | 3-4 weeks |
 | Interview Ready | Mixed Practice | 33 problems | 2-3 weeks |
 
-**Total: 206 problems in 12-16 weeks** (flexible pace based on your schedule)
+**Total: 300+ problems in 16-20 weeks** (flexible pace based on your schedule)
+
+## 🎯 Updated Learning Paths
+
+### 📈 Comprehensive Full-Stack Path (20 weeks)
+| Phase | Focus | Problems | Duration |
+|-------|-------|----------|----------|
+| **Foundation** | Warmup + Two Pointers + Basic Algorithms | 40 problems | 3 weeks |
+| **Core Patterns** | Sliding Window + Hash Maps + Stack | 60 problems | 4 weeks |
+| **Advanced Algorithms** | Binary Search + Recursion + Dynamic Programming | 50 problems | 3 weeks |
+| **TypeScript & APIs** | Backend patterns for companies like Clipboard Health | 25 problems | 2 weeks |
+| **React Mastery** | Frontend patterns and modern React | 30 problems | 3 weeks |
+| **Quality & Testing** | TDD, testing patterns, code quality | 25 problems | 2 weeks |
+| **System Design** | Scalability, architecture, design patterns | 25 problems | 2 weeks |
+| **Interview Ready** | Real-world scenarios + performance optimization | 50 problems | 3 weeks |
+
+### ⚡ Focused Specialization Paths
+
+#### Backend/API Focus (Clipboard Health prep)
+1. **Algorithm Foundation** (4 weeks): Core patterns + data structures
+2. **TypeScript API Practice** (2 weeks): All API problems  
+3. **System Design** (2 weeks): Caching, rate limiting, scalability
+4. **Testing & Quality** (1 week): API testing patterns
+5. **Real-world Integration** (1 week): Full-stack scenarios
+
+#### Frontend/React Focus
+1. **Algorithm Foundation** (4 weeks): Core patterns + data structures
+2. **React Interview Practice** (3 weeks): All React problems
+3. **Performance Optimization** (2 weeks): Frontend performance
+4. **Testing Practice** (2 weeks): Component and integration testing  
+5. **Real-world Projects** (1 week): Complete applications
 
 ## 🔥 Ready to Start?
 
@@ -152,4 +222,53 @@ Interview simulation and pattern combinations
 - **PATTERN_MASTERY_TRACKER.md** - Track your progress with achievement levels
 - **study-plans/30-day-plan.md** - Structured foundation building plan
 
-Remember: **206 problems = Interview mastery**. Start with warmups, master patterns, ace interviews! 🚀
+## 🛠️ Setup & Installation
+
+### Quick Start
+```bash
+# Install all dependencies for full functionality
+npm install
+
+# Test a basic algorithm problem
+node test.js easy-01-count-occurrences
+
+# Test TypeScript API practice (after install)
+node test.js easy-01-basic-fetch
+
+# Test React hooks (utility functions work immediately)
+node test.js easy-01-use-counter-hook
+```
+
+### Full TypeScript & React Setup
+```bash
+# For complete TypeScript and React development
+npm install
+
+# Type checking
+npm run type-check
+
+# Linting
+npm run lint
+
+# Jest testing (for React component testing)
+npm run test:coverage
+```
+
+## 🎯 Choose Your Path
+
+### 🥇 **Complete Mastery** (300+ problems)
+Perfect for comprehensive interview prep and career advancement
+
+### 🎯 **Algorithm Focus** (206 problems)  
+Traditional coding interview preparation with all core patterns
+
+### 🔧 **Backend Specialist** (API + System Design + Core Algorithms)
+Ideal for companies like Clipboard Health, focusing on TypeScript, APIs, and system design
+
+### ⚛️ **Frontend Expert** (React + Performance + Core Algorithms)
+Modern frontend development with React, hooks, and performance optimization
+
+### 🧪 **Quality Engineer** (Testing + Core Algorithms)
+Testing-focused path with TDD, mocking, and quality assurance practices
+
+Remember: **300+ problems = Complete interview mastery**. Start with warmups, choose your specialization, and ace any technical interview! 🚀
