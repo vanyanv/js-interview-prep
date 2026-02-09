@@ -31,6 +31,13 @@ Hints:
   - You can also use Math.max(...array) but practice the loop first
 */
 
+const findMaximum = (array) => {
+  const max = Math.max(...array);
+
+  return max;
+};
+
+export default findMaximum;
 
 export const functionName = 'findMaximum';
 
