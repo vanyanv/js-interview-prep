@@ -1,21 +1,21 @@
-# 🧠 Problem Solving Guide - Master the Fundamentals
+# Problem Solving Guide
 
-## 📋 The UMPIRE Method (Your Problem-Solving Framework)
+Your tactical reference for coding interviews. Use this during practice and review before interviews.
 
-### U - Understand (5-10 mins)
-### M - Match (2-3 mins)
-### P - Plan (5-10 mins)
-### I - Implement (15-20 mins)
-### R - Review (3-5 mins)
-### E - Evaluate (2-3 mins)
+**Related resources in this project:**
+- `FUNDAMENTALS_FIRST.md` — JavaScript methods, syntax, and complexity reference
+- `PATTERN_MASTERY_TRACKER.md` — Daily routine, weekly goals, and progress tracking
+- `patterns/` — Deep-dive guides for each algorithmic pattern
 
 ---
 
-## 🎯 Step-by-Step Approach for EVERY Problem
+## The UMPIRE Method
 
-### Step 1: UNDERSTAND (Don't Rush This!)
-```javascript
-// Ask yourself these questions:
+**Total time budget: 30-45 minutes per problem**
+
+### U - Understand (5-10 mins)
+```
+Ask yourself:
 
 1. What is the input?
    - Data type? (array, string, number?)
@@ -23,52 +23,29 @@
    - Can it be empty/null?
 
 2. What is the output?
-   - Data type?
-   - Format?
+   - Data type? Format?
 
-3. Look at examples:
-   - Work through them BY HAND
-   - Understand the transformation
+3. Work through examples BY HAND
+   - Understand the transformation from input to output
 
 4. Identify constraints:
    - Time/space requirements?
    - Can I modify the input?
-   - Are there duplicates?
-   - Negative numbers?
-   - Sorted or unsorted?
+   - Duplicates? Negative numbers? Sorted or unsorted?
 
-5. Edge cases to consider:
-   - Empty input
-   - Single element
-   - All same elements
-   - Very large input
+5. Edge cases:
+   - Empty input, single element, all same elements, very large input
 ```
 
-**🚨 RED FLAGS: If you can't explain the problem to a 5-year-old, you don't understand it yet!**
+**If you can't explain the problem in one sentence, you don't understand it yet.**
 
-### Step 2: MATCH (Pattern Recognition)
-```javascript
-// Which pattern fits?
+### M - Match (2-3 mins)
 
-Arrays:
-- Sorted? → Two Pointers
-- Subarray/substring? → Sliding Window
-- Find pair/triplet? → Hash Map or Two Pointers
-- In-place modification? → Two Pointers (slow/fast)
+Use the Pattern Decision Tree below to identify which pattern fits.
 
-Strings:
-- Palindrome? → Two Pointers
-- Anagram? → Hash Map (frequency counting)
-- Substring? → Sliding Window
-
-Need O(1) lookup? → Hash Map
-Need order/hierarchy? → Stack or Queue
-Need optimization? → Greedy or DP
+### P - Plan (5-10 mins)
 ```
-
-### Step 3: PLAN (Write Pseudocode First!)
-```javascript
-// ALWAYS write pseudocode before coding!
+ALWAYS write pseudocode before coding!
 
 Example for Two Sum:
 1. Create empty hash map
@@ -77,93 +54,228 @@ Example for Two Sum:
    - If complement exists in map, return indices
    - Otherwise, store current number with index
 3. Return empty array (no solution)
-
-// Write out your approach in comments:
-function twoSum(nums, target) {
-  // Step 1: Create hash map for O(1) lookup
-  // Step 2: Iterate through array
-  // Step 3: Check if complement exists
-  // Step 4: Store current if not found
-}
 ```
 
-### Step 4: IMPLEMENT (Code Cleanly)
-```javascript
-// Start with the simplest approach that works!
+Write your approach as comments in the function body before filling in code.
 
-GOOD:
+### I - Implement (15-20 mins)
+```
+Start with the simplest approach that works.
+
+DO:
 - Clear variable names (not i, j, k unless indices)
 - One operation per line
 - Early returns for edge cases
-- Comments for complex logic
 
-BAD:
-- Trying to be clever
-- One-liners that are hard to read
-- Premature optimization
+DON'T:
+- Try to be clever
+- Write hard-to-read one-liners
+- Optimize prematurely
 ```
 
-### Step 5: REVIEW (Test Your Code)
-```javascript
-// Test these cases IN ORDER:
+### R - Review (3-5 mins)
+```
+Test in this order:
 
-1. ✅ Happy path (normal example)
-2. ✅ Edge cases:
-   - Empty input: []
-   - Single element: [5]
-   - Two elements: [1, 2]
+1. Happy path (normal example from the problem)
+2. Edge cases:
+   - Empty: []
+   - Single: [5]
    - Duplicates: [1, 1, 1]
-   - Negative numbers: [-1, -2, 3]
+   - Negative: [-1, -2, 3]
    - Zero: [0, 1, 0]
-
-3. ✅ Walk through your code line by line
-   - Use actual values
-   - Track variables on paper
+3. Walk through code line by line with actual values
 ```
 
-### Step 6: EVALUATE (Complexity Analysis)
-```javascript
-// Always state time and space complexity
+### E - Evaluate (2-3 mins)
+```
+State time and space complexity:
 
-Time Complexity:
-- Single loop: O(n)
-- Nested loops: O(n²)
-- Sorting: O(n log n)
-- Hash map operations: O(1) average
-
-Space Complexity:
-- Fixed variables: O(1)
-- Hash map/array that grows with input: O(n)
-- Recursion: O(depth of recursion)
+Time:  Single loop = O(n), Nested loops = O(n²),
+       Sorting = O(n log n), Hash lookup = O(1) avg
+Space: Fixed variables = O(1), Hash map/array growing with input = O(n),
+       Recursion = O(depth)
 ```
 
 ---
 
-## 🔥 Common Mistakes (And How to Avoid Them)
+## Pattern Decision Tree
+
+When you read a problem, scan these triggers to pick your pattern:
+
+```
+Input is SORTED?
+├── Need pair/triplet summing to target? → Two Pointers (start + end)
+├── Find specific value or boundary? → Binary Search
+└── Optimize over a range? → Binary Search on answer space
+
+SUBARRAY or SUBSTRING problem?
+├── Fixed size window? → Sliding Window (fixed)
+├── Shortest/longest with constraint? → Sliding Window (variable)
+└── Count all subarrays? → Prefix Sum or DP
+
+Need O(1) LOOKUP or COUNTING?
+├── Count occurrences? → Hash Map (frequency counter)
+├── Track seen elements? → Set
+├── Group/categorize items? → Hash Map
+└── Find pairs/complements? → Hash Map
+
+LINKED LIST or CYCLE problem?
+├── Detect cycle? → Fast/Slow Pointers
+├── Find middle node? → Fast/Slow Pointers
+└── In-place modification? → Fast/Slow Pointers
+
+MATCHING, NESTING, or PAIRING?
+├── Parentheses/brackets? → Stack
+├── Next greater/smaller element? → Monotonic Stack
+└── Undo/history operations? → Stack
+
+TREE structure or GENERATE ALL combinations?
+├── Tree traversal? → Recursion (DFS)
+├── Generate subsets/permutations? → Recursion + Backtracking
+└── Break into smaller identical subproblems? → Recursion
+
+OPTIMIZATION or COUNTING PATHS?
+├── Overlapping subproblems? → Dynamic Programming
+├── "How many ways to...?" → DP
+├── Min/max with sequential choices? → DP or Greedy
+└── Can make locally optimal choice? → Greedy
+
+Nothing obvious?
+→ Start with brute force, then see Optimization Strategies below
+```
+
+See `patterns/` directory for detailed guides on each pattern.
+
+---
+
+## When You're Stuck
+
+### After 5 minutes
+- Re-read the problem. Did you miss a constraint?
+- Work through the example by hand again. What are you doing mentally?
+- Revisit the pattern decision tree. Did you pick the wrong pattern?
+
+### After 15 minutes
+- **Simplify**: Can you solve it for n=1? n=2? n=3? Build up from there.
+- **Brute force it**: What's the obvious O(n^2) or O(2^n) solution? Write it. You can optimize later.
+- **List what you know**: Write down every observation, constraint, and invariant.
+- **Check the pattern guide**: `patterns/<pattern-name>.md` has worked examples.
+
+### After 30 minutes
+- **Work backwards**: Start from the desired output. What's the last step?
+- **Try a different data structure**: Would a stack/set/map make this easier?
+- **Take a 5-minute break**: Walk away. Seriously. Fresh eyes find solutions.
+- **Look at the approach** (not the code): Read a hint or the first line of an editorial.
+
+Being stuck is part of learning. The struggle is what builds the skill.
+
+---
+
+## Interview Communication
+
+### Before Coding
+- "Let me restate the problem to make sure I understand..."
+- "The constraints are X and Y — I'm thinking [pattern] because..."
+- "Can I modify the input array?" / "Are there space constraints?"
+- "Let me walk through this example by hand first."
+
+### While Planning
+- "I see two approaches: X is O(n^2) time, Y is O(n) time with O(n) space. I'll go with Y."
+- "I'll start with the brute force to verify correctness, then optimize."
+
+### During Implementation
+- Narrate key decisions, not every line
+- "I'm using a hash map here for O(1) complement lookups..."
+- "This edge case handles empty input..."
+
+### When Stuck (Out Loud)
+- "Let me think about what happens at this boundary..."
+- "I think I need to reconsider my approach — let me step back."
+- "Could you give me a hint on the expected time complexity?"
+- **Never** go silent for more than 30 seconds
+- **Never** say "I don't know" without first explaining what you've tried
+
+### After Coding
+- "Let me trace through with the first example..."
+- "Edge case: what if the array is empty? My line 3 handles that."
+- "Time complexity is O(n), space is O(n) for the hash map."
+
+---
+
+## Optimization Strategies
+
+### Step 1: Start with what works
+Write the brute force. Nested loops, repeated scans — whatever produces correct output. Understand *why* it's slow.
+
+### Step 2: Identify the bottleneck
+- **Repeated lookups?** → Cache in a Hash Map or Set
+- **Recalculating same subproblems?** → Memoize (DP)
+- **Checking all pairs?** → Sort + Two Pointers, or Hash Map
+- **Scanning the whole array each iteration?** → Precompute (prefix sum, sorted structure)
+
+### Step 3: Common upgrades
+```
+O(n²) → O(n):       Hash Map for lookups, Two Pointers, Sliding Window
+O(n²) → O(n log n): Sort first, then linear scan or binary search
+O(2^n) → O(n*2^n):  DP with bitmask
+O(2^n) → O(n²):     DP (tabulation or memoization)
+```
+
+### Example
+```
+Two Sum brute force: Check every pair → O(n²)
+Insight: For each number, I need its complement. That's a lookup problem.
+Fix: Store seen numbers in hash map → O(n) time, O(n) space.
+```
+
+---
+
+## Common Mistakes
 
 ### 1. Starting to Code Too Early
-**Problem:** You code yourself into a corner
-**Solution:** Spend 40% of time understanding/planning
+**Problem:** You code yourself into a corner.
+**Fix:** Spend 40% of time on Understand + Plan.
 
 ### 2. Not Considering Edge Cases
-**Problem:** Solution fails on empty/single element
-**Solution:** ALWAYS handle: [], [x], null, undefined first
+**Problem:** Fails on empty/single element.
+**Fix:** Always handle `[]`, `[x]`, `null`, `undefined` first.
 
 ### 3. Off-by-One Errors
-**Problem:** Loop bounds are wrong
-**Solution:** Think carefully: < vs <=, length vs length-1
+**Problem:** Loop bounds are wrong.
+**Fix:** Think carefully: `<` vs `<=`, `length` vs `length - 1`.
 
 ### 4. Modifying Input Without Checking
-**Problem:** Some problems forbid input modification
-**Solution:** Ask: "Can I modify the input array?"
+**Problem:** Some problems forbid input modification.
+**Fix:** Ask "Can I modify the input array?" Use `[...arr].sort()` if not.
 
 ### 5. Overcomplicating
-**Problem:** Trying clever one-liners
-**Solution:** Write readable code first, optimize later
+**Problem:** Trying clever one-liners.
+**Fix:** Write readable code first, optimize later.
+
+### 6. Forgetting to Return
+**Problem:** Function ends without returning a value.
+**Fix:** Trace every code path — does each one return something?
+
+### 7. Infinite While Loops
+**Problem:** Loop condition never becomes false.
+**Fix:** Verify your loop variable changes on every iteration.
+
+### 8. Treating 0 as Falsy
+**Problem:** `if (count)` fails when `count` is legitimately `0`.
+**Fix:** Be explicit: `if (count !== undefined)` or `if (count > 0)`.
+
+### 9. Mutation vs Creation Confusion
+**Problem:** `.sort()` mutates the original, `.map()` doesn't.
+**Fix:** Know which methods mutate. When in doubt: `[...arr].sort()`.
+
+### 10. Accessing Out of Bounds
+**Problem:** `arr[i + 1]` when `i` is at the last index.
+**Fix:** Loop to `arr.length - 1`, or add a bounds check.
 
 ---
 
-## 📝 Problem-Solving Template
+## Problem-Solving Template
 
 ```javascript
 /**
@@ -203,123 +315,33 @@ console.log(solutionName([1, 2, 3]));    // Normal case
 
 ---
 
-## 💪 Building Confidence with Fundamentals
+## Quick Reference
 
-### Week 1: Master the Basics
-Focus on understanding these concepts DEEPLY:
+| Need | Go to |
+|------|-------|
+| JS array/string/object methods | `FUNDAMENTALS_FIRST.md` |
+| Complexity cheat sheet | `FUNDAMENTALS_FIRST.md` |
+| Daily routine & weekly goals | `PATTERN_MASTERY_TRACKER.md` |
+| Progress tracking | `progress.md` |
+| Two Pointers deep dive | `patterns/two-pointers.md` |
+| Sliding Window deep dive | `patterns/sliding-window.md` |
+| Hash Maps deep dive | `patterns/hash-maps.md` |
+| Fast/Slow Pointers deep dive | `patterns/fast-slow-pointers.md` |
+| Stack deep dive | `patterns/stack.md` |
+| Binary Search deep dive | `patterns/binary-search.md` |
+| Recursion deep dive | `patterns/recursion.md` |
+| Dynamic Programming deep dive | `patterns/dynamic-programming.md` |
 
-**Arrays:**
-- Accessing elements: O(1)
-- Inserting/deleting: O(n)
-- Common methods: map, filter, reduce, forEach
-- When to use for...of vs for...in vs classic for
+---
 
-**Strings:**
-- Immutable in JavaScript!
-- Common methods: split, join, substring, charAt
-- Converting: Array.from(str) or [...str]
+**You're not slow, you're thorough.**
 
-**Objects/Hash Maps:**
-- When to use: O(1) lookup needed
-- Check existence: key in obj or obj.hasOwnProperty(key)
-- Iterate: Object.keys(), Object.values(), Object.entries()
+Better to deeply understand 20 problems than rush through 100. The goal isn't to solve every problem perfectly the first time — it's to recognize patterns and apply them confidently.
 
-### Week 2: Basic Patterns
-
-**Pattern 1: Frequency Counter**
-```javascript
-// Count occurrences
-const freq = {};
-for (const item of array) {
-  freq[item] = (freq[item] || 0) + 1;
-}
+```
+1st attempt: Confused          → Normal
+2nd attempt: Recognizing       → Growth
+3rd attempt: Solving alone     → Mastery
 ```
 
-**Pattern 2: Two Pointers**
-```javascript
-// Start and end
-let left = 0, right = array.length - 1;
-while (left < right) {
-  // Process and move pointers
-}
-```
-
-**Pattern 3: Sliding Window**
-```javascript
-// Fixed size window
-for (let i = k; i < array.length; i++) {
-  // Remove leftmost, add rightmost
-  window = window - array[i-k] + array[i];
-}
-```
-
----
-
-## 🎓 Study Plan for Fundamentals
-
-### Phase 1: Understanding (Days 1-3)
-- Don't solve yet!
-- Read 3 problems per day
-- Write down patterns you notice
-- Explain problems in your own words
-
-### Phase 2: Guided Practice (Days 4-7)
-- Solve WITH solutions available
-- Focus on understanding WHY
-- Implement multiple approaches
-- Compare trade-offs
-
-### Phase 3: Independent Practice (Days 8-14)
-- Solve without looking
-- Time yourself (but don't rush)
-- If stuck > 30 mins, peek at hints
-- Implement, then check solution
-
-### Phase 4: Pattern Mastery (Days 15-21)
-- Group problems by pattern
-- Solve similar problems back-to-back
-- Write your own pattern guide
-- Teach someone else
-
----
-
-## 🚀 Daily Routine for Building Confidence
-
-### Morning (20 mins)
-1. Review yesterday's problem
-2. Re-solve without looking
-3. Explain approach out loud
-
-### Main Session (40 mins)
-1. New problem using UMPIRE method
-2. Implement cleanly
-3. Test thoroughly
-4. Check optimal solution
-
-### Evening (10 mins)
-1. Write what you learned
-2. Note any struggles
-3. Plan tomorrow's problem
-
----
-
-## 💡 Confidence Builders
-
-1. **Start easier than you think:** If medium feels hard, do 20 easy problems first
-2. **Solve the same problem multiple ways:** Brute force → Optimized
-3. **Explain to rubber duck:** If you can teach it, you know it
-4. **Track small wins:** Celebrate every problem solved
-5. **Focus on patterns, not memorization:** Understand the "why"
-
----
-
-## 📌 Remember
-
-**You're not slow, you're thorough!**
-
-Better to deeply understand 20 problems than rush through 100.
-
-The goal isn't to solve every problem perfectly the first time.
-The goal is to recognize patterns and apply them confidently.
-
-Every expert was once a beginner who refused to give up. 💪
+Every expert was once a beginner who refused to give up.
