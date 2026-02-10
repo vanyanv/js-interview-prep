@@ -32,18 +32,21 @@ class TestRunner {
 
       // Load problem and solution
       const problem = await import(problemPath);
-      const solutionFile = path.join(__dirname, 'solutions', `${problemName}.js`);
+      const solutionInfo = this.findSolutionFile(problemName);
 
-      if (!fs.existsSync(solutionFile)) {
-        console.log(chalk.yellow(`📝 Solution file not found: solutions/${problemName}.js`));
-        console.log(chalk.gray('\nCreate your solution file with:\n'));
-        console.log(chalk.white(`export function ${problem.functionName || 'solution'}(...args) {`));
-        console.log(chalk.white(`  // Your code here`));
-        console.log(chalk.white(`}`));
+      if (!solutionInfo) {
+        const funcName = problem.functionName || 'solution';
+        console.log(chalk.yellow(`📝 Solution file not found: solutions/${problemName}.js or .ts`));
+        console.log(chalk.gray('\nCreate your solution file (JS or TS):\n'));
+        console.log(chalk.white(`  // solutions/${problemName}.js`));
+        console.log(chalk.white(`  export function ${funcName}(...args) { }`));
+        console.log('');
+        console.log(chalk.white(`  // solutions/${problemName}.ts`));
+        console.log(chalk.white(`  export function ${funcName}(...args: any[]): any { }`));
         return;
       }
 
-      const solution = await import(solutionFile);
+      const solution = await this.importSolution(solutionInfo);
       const functionName = problem.functionName || 'solution';
       const solutionFunc = solution[functionName] || solution.default;
 
@@ -114,6 +117,31 @@ class TestRunner {
       return true;
     }
     return false;
+  }
+
+  findSolutionFile(problemName) {
+    const dir = path.join(__dirname, 'solutions');
+    const tsPath = path.join(dir, `${problemName}.ts`);
+    const jsPath = path.join(dir, `${problemName}.js`);
+    if (fs.existsSync(tsPath)) return { path: tsPath, isTypeScript: true };
+    if (fs.existsSync(jsPath)) return { path: jsPath, isTypeScript: false };
+    return null;
+  }
+
+  async importSolution(solutionInfo) {
+    if (solutionInfo.isTypeScript) {
+      try {
+        const { tsImport } = await import('tsx/esm/api');
+        return tsImport(solutionInfo.path, import.meta.url);
+      } catch (err) {
+        if (err.code === 'ERR_MODULE_NOT_FOUND' || err.code === 'MODULE_NOT_FOUND') {
+          console.log(chalk.red('❌ tsx package required for .ts solutions. Run: npm install'));
+          process.exit(1);
+        }
+        throw err;
+      }
+    }
+    return import(solutionInfo.path);
   }
 
   async findProblem(problemName) {

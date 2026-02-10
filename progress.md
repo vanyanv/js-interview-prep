@@ -28,7 +28,7 @@ _Focus: Warmup + Two Pointers_
 
 **Easy (12)**
 
-- [] easy-01-backspace-string-compare
+- [ ] easy-01-backspace-string-compare
 - [ ] easy-02-is-palindrome
 - [ ] easy-03-is-subsequence
 - [ ] easy-04-long-pressed-name
