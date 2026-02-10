@@ -1,6 +1,7 @@
 # JavaScript Interview Prep Progress Tracker
 
 ## 📈 Overall Progress
+
 **Started:** _[Date]_
 **Target:** 206 problems for interview mastery
 **Current Streak:** 0 days
@@ -9,20 +10,25 @@
 ---
 
 ## 📚 Phase 1: Foundation (33 problems)
-*Focus: Warmup + Two Pointers*
+
+_Focus: Warmup + Two Pointers_
 
 ### 00-warmup (6 problems)
+
 **Easy (6)**
-- [ ] easy-01-count-occurrences
-- [ ] easy-02-count-vowels
-- [ ] easy-03-find-duplicates-basic
-- [ ] easy-04-find-maximum
-- [ ] easy-05-reverse-array
-- [ ] easy-06-sum-array
+
+- [x] easy-01-count-occurrences
+- [x] easy-02-count-vowels
+- [x] easy-03-find-duplicates-basic
+- [x] easy-04-find-maximum
+- [x] easy-05-reverse-array
+- [x] easy-06-sum-array
 
 ### 01-two-pointers (27 problems)
+
 **Easy (12)**
-- [ ] easy-01-backspace-string-compare
+
+- [] easy-01-backspace-string-compare
 - [ ] easy-02-is-palindrome
 - [ ] easy-03-is-subsequence
 - [ ] easy-04-long-pressed-name
@@ -36,6 +42,7 @@
 - [ ] easy-12-valid-palindrome-ii
 
 **Medium (12)**
+
 - [ ] medium-01-boats-to-save-people
 - [ ] medium-02-compare-version-numbers
 - [ ] medium-03-container-most-water
@@ -50,26 +57,30 @@
 - [ ] medium-12-two-sum-sorted
 
 **Hard (3)**
+
 - [ ] hard-01-minimum-window-substring
 - [ ] hard-02-substring-concatenation
 - [ ] hard-03-trapping-rain-water
 
-**Phase 1 Notes:**
--
+## **Phase 1 Notes:**
 
 ---
 
 ## 🎯 Phase 2: Core Patterns (55 problems)
-*Focus: Sliding Window + Hash Maps*
+
+_Focus: Sliding Window + Hash Maps_
 
 ### 02-sliding-window (25 problems)
+
 **Easy (4)**
+
 - [ ] easy-01-average-subarrays-k
 - [ ] easy-02-find-all-anagrams
 - [ ] easy-03-longest-substring-no-repeat
 - [ ] easy-04-max-sum-subarray-k
 
 **Medium (17)**
+
 - [ ] medium-01-character-replacement
 - [ ] medium-02-find-all-duplicates
 - [ ] medium-03-fruit-into-baskets
@@ -89,13 +100,16 @@
 - [ ] medium-17-substrings-k-distinct
 
 **Hard (4)**
+
 - [ ] hard-01-count-subarrays-k-different
 - [ ] hard-02-minimum-window-subsequence
 - [ ] hard-03-shortest-subarray-sum
 - [ ] hard-04-sliding-window-median
 
 ### 03-hash-maps (30 problems)
+
 **Easy (18)**
+
 - [ ] easy-01-contains-duplicate
 - [ ] easy-02-contains-duplicate-ii
 - [ ] easy-03-design-hashmap
@@ -116,6 +130,7 @@
 - [ ] easy-18-word-pattern
 
 **Medium (12)**
+
 - [ ] medium-01-brick-wall
 - [ ] medium-02-contiguous-array
 - [ ] medium-03-custom-sort-string
@@ -129,16 +144,18 @@
 - [ ] medium-11-twitter-design
 - [ ] medium-12-valid-sudoku
 
-**Phase 2 Notes:**
--
+## **Phase 2 Notes:**
 
 ---
 
 ## 🏗️ Phase 3: Advanced Patterns (50 problems)
-*Focus: Fast/Slow Pointers + Stack + Binary Search*
+
+_Focus: Fast/Slow Pointers + Stack + Binary Search_
 
 ### 04-fast-slow-pointers (15 problems)
+
 **Easy (6)**
+
 - [ ] easy-01-happy-number
 - [ ] easy-02-intersection-two-linked-lists
 - [ ] easy-03-linked-list-cycle
@@ -147,6 +164,7 @@
 - [ ] easy-06-remove-duplicates-sorted
 
 **Medium (8)**
+
 - [ ] medium-01-circular-array-loop
 - [ ] medium-02-find-duplicate-number
 - [ ] medium-03-linked-list-cycle-ii
@@ -157,10 +175,13 @@
 - [ ] medium-08-sort-list
 
 **Hard (1)**
+
 - [ ] hard-01-reverse-nodes-k-group
 
 ### 05-stack (20 problems)
+
 **Easy (9)**
+
 - [ ] easy-01-backspace-string-compare
 - [ ] easy-02-implement-queue-using-stacks
 - [ ] easy-03-implement-stack-using-queues
@@ -172,6 +193,7 @@
 - [ ] easy-09-valid-parentheses
 
 **Medium (9)**
+
 - [ ] medium-01-asteroid-collision
 - [ ] medium-02-daily-temperatures
 - [ ] medium-03-evaluate-reverse-polish
@@ -183,11 +205,14 @@
 - [ ] medium-09-validate-stack-sequences
 
 **Hard (2)**
+
 - [ ] hard-01-basic-calculator
 - [ ] hard-02-largest-rectangle-histogram
 
 ### 06-binary-search (15 problems)
+
 **Easy (5)**
+
 - [ ] easy-01-binary-search
 - [ ] easy-02-first-bad-version
 - [ ] easy-03-guess-number-higher-lower
@@ -195,6 +220,7 @@
 - [ ] easy-05-sqrt-x
 
 **Medium (9)**
+
 - [ ] medium-01-capacity-ship-packages
 - [ ] medium-02-find-first-last-position
 - [ ] medium-03-find-minimum-rotated-sorted
@@ -206,18 +232,21 @@
 - [ ] medium-09-time-based-key-value
 
 **Hard (1)**
+
 - [ ] hard-01-split-array-largest-sum
 
-**Phase 3 Notes:**
--
+## **Phase 3 Notes:**
 
 ---
 
 ## 🧠 Phase 4: Algorithms (35 problems)
-*Focus: Recursion + Dynamic Programming*
+
+_Focus: Recursion + Dynamic Programming_
 
 ### 07-recursion (15 problems)
+
 **Easy (13)**
+
 - [ ] easy-01-binary-tree-inorder
 - [ ] easy-02-binary-tree-postorder
 - [ ] easy-03-binary-tree-preorder
@@ -233,11 +262,14 @@
 - [ ] easy-13-symmetric-tree
 
 **Medium (2)**
+
 - [ ] medium-01-generate-parentheses
 - [ ] medium-02-validate-binary-search-tree
 
 ### 08-dynamic-programming (20 problems)
+
 **Easy (5)**
+
 - [ ] easy-01-best-time-buy-sell-stock
 - [ ] easy-02-climbing-stairs
 - [ ] easy-03-house-robber
@@ -245,6 +277,7 @@
 - [ ] easy-05-range-sum-query
 
 **Medium (14)**
+
 - [ ] medium-01-coin-change
 - [ ] medium-02-decode-ways
 - [ ] medium-03-house-robber-ii
@@ -261,18 +294,21 @@
 - [ ] medium-14-word-break
 
 **Hard (1)**
+
 - [ ] hard-01-edit-distance
 
-**Phase 4 Notes:**
--
+## **Phase 4 Notes:**
 
 ---
 
 ## 🚀 Phase 5: Interview Ready (45 problems)
-*Focus: Mixed Practice + Simulation*
+
+_Focus: Mixed Practice + Simulation_
 
 ### 09-mixed-practice (33 problems)
+
 **Easy (15)**
+
 - [ ] easy-01-merge-sorted-arrays-easy
 - [ ] easy-02-palindrome-number
 - [ ] easy-03-roman-to-integer
@@ -290,6 +326,7 @@
 - [ ] easy-15-find-disappeared-numbers
 
 **Medium (8)**
+
 - [ ] medium-01-product-except-self
 - [ ] medium-02-spiral-matrix
 - [ ] medium-03-word-ladder
@@ -300,6 +337,7 @@
 - [ ] medium-08-merge-intervals
 
 **Hard (10)**
+
 - [ ] hard-01-median-two-sorted-arrays
 - [ ] hard-02-regular-expression-matching
 - [ ] hard-03-n-queens
@@ -311,12 +349,12 @@
 - [ ] hard-09-merge-k-sorted-lists
 - [ ] hard-10-alien-dictionary
 
-**Phase 5 Notes:**
--
+## **Phase 5 Notes:**
 
 ---
 
 ## 🔧 Daily Log Template
+
 ```
 Date: YYYY-MM-DD
 Problem: problem-name
@@ -331,6 +369,7 @@ Notes:
 ## 💡 Key Learnings
 
 ### Patterns Mastered
+
 - [ ] Two Pointers (25 problems)
 - [ ] Sliding Window (25 problems)
 - [ ] Hash Maps/Sets (30 problems)
@@ -342,6 +381,7 @@ Notes:
 - [ ] Mixed Patterns (45 problems)
 
 ### Common Mistakes to Avoid
+
 1. Not considering edge cases (empty array, single element)
 2. Off-by-one errors in loops
 3. Not handling negative numbers
@@ -350,6 +390,7 @@ Notes:
 ---
 
 ## 📊 Statistics
+
 - **Total Problems:** 0/206
 - **Easy Problems:** 0/80 (warmup + easy mixed)
 - **Medium Problems:** 0/100 (most pattern problems)
@@ -360,12 +401,14 @@ Notes:
 - **Success Rate (First Try:** --%
 
 ## 🏆 Achievement Levels
+
 - 🥉 **Pattern Novice:** 5 problems per pattern
 - 🥈 **Pattern Apprentice:** 10 problems per pattern
 - 🥇 **Pattern Proficient:** 15 problems per pattern
 - 💎 **Pattern Expert:** 20+ problems per pattern
 
 ## 📈 Phase Progress
+
 - **Phase 1 (Foundation):** 0/33 problems (6 warmup + 27 two-pointers)
 - **Phase 2 (Core Patterns):** 0/55 problems (25 sliding-window + 30 hash-maps)
 - **Phase 3 (Advanced Patterns):** 0/50 problems (15 fast-slow + 20 stack + 15 binary-search)
