@@ -49,7 +49,7 @@
 - Problems: `medium-12-two-sum-sorted`, `easy-08-remove-element`
 - Pattern: Same direction + sorted array optimization
 
-**Day 6: Two Pointers - Array Manipulation**
+**Day 6: Two Pointers - Array Manipulation** [X]
 - Review: In-place modifications
 - Problems: `easy-07-remove-duplicates`, `easy-06-move-zeros`
 - Pattern: Fast/slow pointers for array cleanup
