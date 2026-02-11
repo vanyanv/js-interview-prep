@@ -79,6 +79,26 @@ export const tests = [
   {
     input: ["vtkgn", "vttkgnn"],
     expected: true
+  },
+  {
+    input: ["a", "a"],
+    expected: true
+  },
+  {
+    input: ["a", "b"],
+    expected: false
+  },
+  {
+    input: ["aaa", "aaaaaaa"],
+    expected: true
+  },
+  {
+    input: ["ab", "ba"],
+    expected: false
+  },
+  {
+    input: ["abcde", "aabbccddeee"],
+    expected: true
   }
 ];
 

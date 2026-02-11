@@ -82,6 +82,31 @@ export const tests = [
   {
     input: [[44,10,29,12,49,41,23,5,17,26], 50],
     expected: 6
+  },
+  // Boundary: two people, both at limit
+  {
+    input: [[5,5], 5],
+    expected: 2
+  },
+  // All same weight, can pair
+  {
+    input: [[3,3,3,3,3,3], 6],
+    expected: 3
+  },
+  // All same weight, cannot pair
+  {
+    input: [[4,4,4,4], 5],
+    expected: 4
+  },
+  // Larger input (20 people) with various weights
+  {
+    input: [[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10], 11],
+    expected: 10
+  },
+  // Everyone is at the limit - each needs own boat
+  {
+    input: [[100,100,100,100,100], 100],
+    expected: 5
   }
 ];
 

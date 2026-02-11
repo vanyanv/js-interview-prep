@@ -94,6 +94,27 @@ export const tests = [
   {
     input: [[2,3,4,5,1]],
     expected: 1
+  },
+  // --- Additional rigorous test cases ---
+  {
+    // Already sorted (rotated n times, effectively no rotation)
+    input: [[1,2,3,4,5,6,7,8,9,10]],
+    expected: 1
+  },
+  {
+    // Rotated once (last element moved to front)
+    input: [[10,1,2,3,4,5,6,7,8,9]],
+    expected: 1
+  },
+  {
+    // Negative values, rotation in middle
+    input: [[-1,0,1,2,-5,-4,-3,-2]],
+    expected: -5
+  },
+  {
+    // Larger array, rotation point near end
+    input: [[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2]],
+    expected: 1
   }
 ];
 

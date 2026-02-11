@@ -85,6 +85,32 @@ export const tests = [
   {
     input: [9],
     expected: 3
+  },
+  // --- Additional rigorous test cases ---
+  {
+    // Small non-perfect square
+    input: [2],
+    expected: 1
+  },
+  {
+    // Small non-perfect square
+    input: [3],
+    expected: 1
+  },
+  {
+    // Just below a perfect square (100 - 1 = 99)
+    input: [99],
+    expected: 9
+  },
+  {
+    // Perfect square 100
+    input: [100],
+    expected: 10
+  },
+  {
+    // Larger non-perfect square
+    input: [2147395601],
+    expected: 46340
   }
 ];
 

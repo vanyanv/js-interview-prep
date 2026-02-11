@@ -74,6 +74,22 @@ export const tests = [
   {
     input: ["programming"],
     expected: "prigrammong"
+  },
+  {
+    input: ["b"],
+    expected: "b"
+  },
+  {
+    input: ["aeiou"],
+    expected: "uoiea"
+  },
+  {
+    input: ["bbbbb"],
+    expected: "bbbbb"
+  },
+  {
+    input: ["abcdefghijklmnopqrstuvwxyz"],
+    expected: "ubcdofghijklmnepqrstavwxyz"
   }
 ];
 

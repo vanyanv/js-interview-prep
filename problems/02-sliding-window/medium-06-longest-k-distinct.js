@@ -86,6 +86,22 @@ export const tests = [
   {
     input: ["abcde", 1],
     expected: 1
+  },
+  {
+    input: ["aabbccddee", 2],
+    expected: 4
+  },
+  {
+    input: ["abcdefghijklmnopqrstuvwxyz", 26],
+    expected: 26
+  },
+  {
+    input: ["aaaaaaaaaaaaaaaaaaaaaaaaa", 1],
+    expected: 25
+  },
+  {
+    input: ["", 1],
+    expected: 0
   }
 ];
 

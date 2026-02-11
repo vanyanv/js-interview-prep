@@ -54,5 +54,21 @@ export const tests = [
   {
     input: [["1", "2", "3", "4", "5"]],
     expected: ["5", "4", "3", "2", "1"]
+  },
+  {
+    input: [["a", "a", "a", "a"]],
+    expected: ["a", "a", "a", "a"]
+  },
+  {
+    input: [["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p"]],
+    expected: ["p", "o", "n", "m", "l", "k", "j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
+  },
+  {
+    input: [["z", "y", "x"]],
+    expected: ["x", "y", "z"]
+  },
+  {
+    input: [["!", "@", "#"]],
+    expected: ["#", "@", "!"]
   }
 ];

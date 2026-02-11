@@ -83,6 +83,22 @@ export const tests = [
   {
     input: ["baa", "aa"],
     expected: [1]
+  },
+  {
+    input: ["aaaaaaaaaaaaaaaaaa", "aaa"],
+    expected: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+  },
+  {
+    input: ["a", "ab"],
+    expected: []
+  },
+  {
+    input: ["abcabcabcabc", "abcabc"],
+    expected: [0,3,6]
+  },
+  {
+    input: ["zz", "zz"],
+    expected: [0]
   }
 ];
 

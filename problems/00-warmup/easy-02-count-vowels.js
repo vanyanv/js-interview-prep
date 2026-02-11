@@ -57,5 +57,25 @@ export const tests = [
   {
     input: ["Programming"],
     expected: 3
+  },
+  {
+    input: ["a"],
+    expected: 1
+  },
+  {
+    input: ["z"],
+    expected: 0
+  },
+  {
+    input: ["aEiOuAeIoU"],
+    expected: 10
+  },
+  {
+    input: ["bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"],
+    expected: 0
+  },
+  {
+    input: ["AbCdEfGhIjKlMnOpQrStUvWxYz"],
+    expected: 5
   }
 ];

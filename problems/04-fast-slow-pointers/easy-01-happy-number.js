@@ -88,5 +88,21 @@ export const tests = [
   {
     input: [145],
     expected: false
+  },
+  {
+    input: [10],
+    expected: true
+  },
+  {
+    input: [100],
+    expected: true
+  },
+  {
+    input: [116],
+    expected: false
+  },
+  {
+    input: [44],
+    expected: true
   }
 ];

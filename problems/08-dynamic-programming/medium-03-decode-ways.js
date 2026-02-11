@@ -96,6 +96,22 @@ export const tests = [
   {
     input: ["1234"],
     expected: 3
+  },
+  {
+    input: ["11111"],
+    expected: 8
+  },
+  {
+    input: ["2626"],
+    expected: 4
+  },
+  {
+    input: ["30"],
+    expected: 0
+  },
+  {
+    input: ["111111111111111111111"],
+    expected: 17711
   }
 ];
 

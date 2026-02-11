@@ -89,6 +89,32 @@ export const tests = [
   {
     input: [[1,2,3,4,5,6,7,8,9,10], 5, 5],
     expected: [3,4,5,6,7]
+  },
+  // --- Additional rigorous test cases ---
+  {
+    // All same values
+    input: [[3,3,3,3,3], 2, 3],
+    expected: [3,3]
+  },
+  {
+    // k equals array length (return entire array)
+    input: [[1,2,3,4,5], 5, 100],
+    expected: [1,2,3,4,5]
+  },
+  {
+    // Single element, k=1
+    input: [[7], 1, 7],
+    expected: [7]
+  },
+  {
+    // x is exactly between two elements, prefer smaller
+    input: [[1,3,5,7,9], 2, 4],
+    expected: [3,5]
+  },
+  {
+    // Larger array, x far to the left
+    input: [[10,20,30,40,50,60,70,80,90,100], 3, -100],
+    expected: [10,20,30]
   }
 ];
 

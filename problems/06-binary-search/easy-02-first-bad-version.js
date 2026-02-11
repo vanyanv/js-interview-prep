@@ -90,6 +90,27 @@ export const tests = [
   {
     input: [1000, 999],
     expected: 999
+  },
+  // --- Additional rigorous test cases ---
+  {
+    // All versions are bad (first version is bad)
+    input: [50, 1],
+    expected: 1
+  },
+  {
+    // Only the last version is bad
+    input: [50, 50],
+    expected: 50
+  },
+  {
+    // Large n, bad version in the middle
+    input: [10000, 5000],
+    expected: 5000
+  },
+  {
+    // Two versions, second is bad
+    input: [2, 2],
+    expected: 2
   }
 ];
 

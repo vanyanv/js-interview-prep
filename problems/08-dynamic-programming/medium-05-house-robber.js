@@ -100,6 +100,22 @@ export const tests = [
   {
     input: [[10,1,1,10]],
     expected: 20
+  },
+  {
+    input: [[0,0,0,0,0]],
+    expected: 0
+  },
+  {
+    input: [[100,1,100,1,100]],
+    expected: 300
+  },
+  {
+    input: [[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]],
+    expected: 10
+  },
+  {
+    input: [[400,300,200,100]],
+    expected: 600
   }
 ];
 

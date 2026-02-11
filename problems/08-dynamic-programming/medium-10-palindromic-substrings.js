@@ -91,6 +91,22 @@ export const tests = [
   {
     input: ["aba"],
     expected: 4
+  },
+  {
+    input: ["abba"],
+    expected: 6
+  },
+  {
+    input: ["abcba"],
+    expected: 7
+  },
+  {
+    input: ["aaaa"],
+    expected: 10
+  },
+  {
+    input: ["abcd"],
+    expected: 4
   }
 ];
 

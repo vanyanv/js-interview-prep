@@ -65,7 +65,7 @@ export const tests = [
   },
   {
     input: [[1,1000,1], 1],
-    expected: 1000
+    expected: 1
   },
   {
     input: [[1,79,80,1,1,1,200,1], 3],

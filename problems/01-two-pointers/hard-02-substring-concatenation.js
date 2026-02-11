@@ -81,6 +81,31 @@ export const tests = [
   {
     input: ["abababab", ["a","b","a"]],
     expected: [0,2,4]
+  },
+  // Boundary: s too short for words
+  {
+    input: ["ab", ["abc"]],
+    expected: []
+  },
+  // All same words, all same chars
+  {
+    input: ["aaaaaa", ["aa","aa"]],
+    expected: [0,2]
+  },
+  // No matches at all
+  {
+    input: ["abcdefgh", ["xyz","uvw"]],
+    expected: []
+  },
+  // Single char words
+  {
+    input: ["abcabc", ["a","b","c"]],
+    expected: [0,3]
+  },
+  // Larger input: words appearing only once
+  {
+    input: ["thequickbrownfoxjumps", ["quick","brown"]],
+    expected: [3]
   }
 ];
 

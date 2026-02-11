@@ -95,5 +95,21 @@ export const tests = [
   {
     input: [[1, 2, 3, 4, 5, 6], 0], // cycle back to head
     expected: 1 // value of the node where cycle begins
+  },
+  {
+    input: [[1, 2, 3, 4, 5, 6], 3], // cycle begins at index 3 (value 4)
+    expected: 4
+  },
+  {
+    input: [[10, 20, 30, 40], 1], // cycle begins at index 1 (value 20)
+    expected: 20
+  },
+  {
+    input: [[1, 2, 3], -1], // no cycle in 3-element list
+    expected: null
+  },
+  {
+    input: [[7, 8, 9, 10], 0], // cycle back to head in 4-element list
+    expected: 7
   }
 ];

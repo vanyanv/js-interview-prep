@@ -93,5 +93,21 @@ export const tests = [
   {
     input: [[1, 2, 3, 4, 5, 6], 0], // cycle back to head
     expected: true
+  },
+  {
+    input: [[1, 2, 3, 4, 5, 6], 5], // tail points to itself
+    expected: true
+  },
+  {
+    input: [[10, 20, 30], -1], // short list no cycle
+    expected: false
+  },
+  {
+    input: [[1, 2, 3, 4, 5, 6, 7, 8], 3], // cycle in the middle of a longer list
+    expected: true
+  },
+  {
+    input: [[1, 2], -1], // two-node list no cycle
+    expected: false
   }
 ];

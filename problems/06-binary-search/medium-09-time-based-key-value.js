@@ -71,6 +71,27 @@ export const tests = [
       [[], ["a", "bar", 1], ["a", 1], ["a", "baz", 3], ["a", 3], ["a", 2]]
     ],
     expected: [null, null, "bar", null, "baz", "bar"]
+  },
+  {
+    input: [
+      ["TimeMap", "get"],
+      [[], ["missing", 1]]
+    ],
+    expected: [null, ""]
+  },
+  {
+    input: [
+      ["TimeMap", "set", "set", "set", "get", "get", "get", "get"],
+      [[], ["x", "a", 1], ["x", "b", 5], ["x", "c", 10], ["x", 1], ["x", 3], ["x", 7], ["x", 10]]
+    ],
+    expected: [null, null, null, null, "a", "a", "b", "c"]
+  },
+  {
+    input: [
+      ["TimeMap", "set", "set", "get", "get"],
+      [[], ["k1", "v1", 2], ["k2", "v2", 3], ["k1", 1], ["k2", 3]]
+    ],
+    expected: [null, null, null, "", "v2"]
   }
 ];
 

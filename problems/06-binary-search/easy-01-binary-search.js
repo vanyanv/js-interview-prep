@@ -84,6 +84,32 @@ export const tests = [
   {
     input: [[1,3,5,7,9], 4],
     expected: -1
+  },
+  // --- Additional rigorous test cases ---
+  {
+    // Two-element array, target is first element
+    input: [[1,2], 1],
+    expected: 0
+  },
+  {
+    // Two-element array, target is second element
+    input: [[1,2], 2],
+    expected: 1
+  },
+  {
+    // Larger array (20 elements), target in the middle
+    input: [[2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40], 26],
+    expected: 12
+  },
+  {
+    // Negative numbers throughout, target present
+    input: [[-50,-40,-30,-20,-10,0,10,20,30,40,50], -30],
+    expected: 2
+  },
+  {
+    // Negative numbers throughout, target absent (falls between elements)
+    input: [[-50,-40,-30,-20,-10,0,10,20,30,40,50], -15],
+    expected: -1
   }
 ];
 

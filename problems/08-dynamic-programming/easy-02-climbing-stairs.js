@@ -97,6 +97,18 @@ export const tests = [
   {
     input: [15],
     expected: 987
+  },
+  {
+    input: [20],
+    expected: 10946
+  },
+  {
+    input: [30],
+    expected: 1346269
+  },
+  {
+    input: [45],
+    expected: 1836311903
   }
 ];
 

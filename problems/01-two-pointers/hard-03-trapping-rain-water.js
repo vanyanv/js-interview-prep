@@ -59,7 +59,7 @@ export const tests = [
   },
   {
     input: [[3,2,1,0,4]],
-    expected: 7
+    expected: 6
   },
   {
     input: [[5,4,1,2]],

@@ -83,6 +83,23 @@ export const tests = [
   {
     input: ["au"],
     expected: 2
+  },
+  // --- NEW TEST CASES ---
+  {
+    input: ["aab"],
+    expected: 2
+  },
+  {
+    input: ["abcdefghijklmnopqrstuvwxyz"],
+    expected: 26
+  },
+  {
+    input: ["abcabcdefabc"],
+    expected: 6
+  },
+  {
+    input: ["tmmzuxt"],
+    expected: 5
   }
 ];
 

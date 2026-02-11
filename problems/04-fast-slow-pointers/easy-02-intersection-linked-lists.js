@@ -105,5 +105,17 @@ export const tests = [
   {
     input: [0, [1], [2, 3, 4], 1, 3], // no intersection, different lengths
     expected: null
+  },
+  {
+    input: [7, [1, 2, 7, 8, 9], [3, 4, 5, 6, 7, 8, 9], 2, 4], // intersection at node 7 with long shared tail
+    expected: 7
+  },
+  {
+    input: [10, [10, 20, 30], [5, 10, 20, 30], 0, 1], // intersection at the head of listA
+    expected: 10
+  },
+  {
+    input: [0, [1, 2, 3, 4, 5], [6, 7, 8, 9, 10], 5, 5], // no intersection, same length
+    expected: null
   }
 ];

@@ -79,6 +79,26 @@ export const tests = [
   {
     input: ["bxj##tw", "bxj###tw"],
     expected: false
+  },
+  {
+    input: ["####", "####"],
+    expected: true
+  },
+  {
+    input: ["a#b#c#d#", ""],
+    expected: true
+  },
+  {
+    input: ["abc###", "def###"],
+    expected: true
+  },
+  {
+    input: ["abcdefghij", "abcdefghij"],
+    expected: true
+  },
+  {
+    input: ["ab#c#de#fg#h", "adfh"],
+    expected: false
   }
 ];
 

@@ -80,6 +80,23 @@ export const tests = [
   {
     input: ["abcdxabcde", "abcdeabcdx"],
     expected: true
+  },
+  // --- NEW TEST CASES ---
+  {
+    input: ["aaa", "aaaaaaaaaaaaaaaa"],
+    expected: true
+  },
+  {
+    input: ["ab", "a"],
+    expected: false
+  },
+  {
+    input: ["a", "zzzzzzzzzzza"],
+    expected: true
+  },
+  {
+    input: ["abcdefghij", "jihgfedcba"],
+    expected: true
   }
 ];
 

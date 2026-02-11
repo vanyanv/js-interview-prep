@@ -89,6 +89,27 @@ export const tests = [
   {
     input: [5, 3],
     expected: 3
+  },
+  // --- Additional rigorous test cases ---
+  {
+    // Pick is the first number
+    input: [100, 1],
+    expected: 1
+  },
+  {
+    // Pick is the last number
+    input: [100, 100],
+    expected: 100
+  },
+  {
+    // Two-element range, pick is second
+    input: [2, 2],
+    expected: 2
+  },
+  {
+    // Large range, pick near the middle
+    input: [10000, 4999],
+    expected: 4999
   }
 ];
 

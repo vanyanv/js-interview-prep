@@ -83,6 +83,23 @@ export const tests = [
   {
     input: ["QWEQWEQWEQWE"],
     expected: 4
+  },
+  // --- NEW TEST CASES ---
+  {
+    input: ["QQQQ"],
+    expected: 3
+  },
+  {
+    input: ["QQQQWWWWEEEERRRR"],
+    expected: 0
+  },
+  {
+    input: ["QQQQQQQR"],
+    expected: 6
+  },
+  {
+    input: ["QQQQQQQQWWWWEEEERRRR"],
+    expected: 4
   }
 ];
 

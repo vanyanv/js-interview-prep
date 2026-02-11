@@ -92,6 +92,27 @@ export const tests = [
       [[[5, 5, 5, 5]], [], [], []]
     ],
     expected: [null, "random", "random", "random"] // Results will vary due to randomness
+  },
+  {
+    input: [
+      ["Solution", "pickIndex"],
+      [[[100]], []]
+    ],
+    expected: [null, 0] // Single weight, always picks index 0
+  },
+  {
+    input: [
+      ["Solution", "pickIndex", "pickIndex", "pickIndex"],
+      [[[1, 1]], [], [], []]
+    ],
+    expected: [null, "random", "random", "random"] // Equal weights
+  },
+  {
+    input: [
+      ["Solution", "pickIndex", "pickIndex"],
+      [[[10, 1, 1, 1, 1]], [], []]
+    ],
+    expected: [null, "random", "random"] // Heavily weighted toward index 0
   }
 ];
 

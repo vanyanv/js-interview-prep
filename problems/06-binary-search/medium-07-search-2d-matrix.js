@@ -89,6 +89,22 @@ export const tests = [
   {
     input: [[[1,3,5,7],[10,11,16,20],[23,30,34,60]], 13],
     expected: false
+  },
+  {
+    input: [[[1]], 0],
+    expected: false
+  },
+  {
+    input: [[[1,3,5,7],[10,11,16,20],[23,30,34,60]], 1],
+    expected: true
+  },
+  {
+    input: [[[1,3,5,7],[10,11,16,20],[23,30,34,60]], 60],
+    expected: true
+  },
+  {
+    input: [[[1,2],[3,4],[5,6]], 4],
+    expected: true
   }
 ];
 

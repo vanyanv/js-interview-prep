@@ -97,6 +97,32 @@ export const tests = [
   {
     input: [[500,500,500], 2],
     expected: 1000
+  },
+  // --- Additional rigorous test cases ---
+  {
+    // All same weight packages, days equals number of packages
+    input: [[5,5,5,5,5], 5],
+    expected: 5
+  },
+  {
+    // All same weight packages, fewer days than packages
+    input: [[5,5,5,5,5], 2],
+    expected: 15
+  },
+  {
+    // Single heavy package among light ones
+    input: [[1,1,1,1,100,1,1,1,1], 3],
+    expected: 100
+  },
+  {
+    // Two packages, two days
+    input: [[1,2], 2],
+    expected: 2
+  },
+  {
+    // Larger array with ascending weights
+    input: [[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], 5],
+    expected: 30
   }
 ];
 

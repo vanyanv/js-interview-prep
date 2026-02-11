@@ -75,6 +75,31 @@ export const tests = [
   {
     input: ["abcddcbea"],
     expected: true
+  },
+  // Boundary: two identical chars (already palindrome)
+  {
+    input: ["aa"],
+    expected: true
+  },
+  // All same characters (15 elements)
+  {
+    input: ["aaaaaaaaaaaaaaa"],
+    expected: true
+  },
+  // Needs to remove first or last char
+  {
+    input: ["cbbcc"],
+    expected: true
+  },
+  // Larger input: clearly not fixable with one deletion
+  {
+    input: ["abcdefghij"],
+    expected: false
+  },
+  // Alternating pattern that fails
+  {
+    input: ["ababababab"],
+    expected: false
   }
 ];
 

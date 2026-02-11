@@ -85,6 +85,22 @@ export const tests = [
   {
     input: ["aaaa", 2],
     expected: []
+  },
+  {
+    input: ["abcdefghijklmnopqrstuvwxyz", 26],
+    expected: ["abcdefghijklmnopqrstuvwxyz"]
+  },
+  {
+    input: ["abababababababababab", 2],
+    expected: ["ab"]
+  },
+  {
+    input: ["abcabcabcabcabcabcabc", 3],
+    expected: ["abc"]
+  },
+  {
+    input: ["zz", 1],
+    expected: ["z"]
   }
 ];
 

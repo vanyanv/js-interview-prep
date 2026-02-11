@@ -89,5 +89,17 @@ export const tests = [
   {
     input: [[7, 14, 21, 28, 35, 42, 49]],
     expected: [28, 35, 42, 49] // middle of odd length
+  },
+  {
+    input: [[1, 2, 3, 4, 5, 6, 7, 8]],
+    expected: [5, 6, 7, 8] // second middle of 8-element even list
+  },
+  {
+    input: [[1, 2, 3, 4, 5, 6, 7, 8, 9]],
+    expected: [5, 6, 7, 8, 9] // middle of 9-element odd list
+  },
+  {
+    input: [[100, 200, 300]],
+    expected: [200, 300] // middle of 3-element list
   }
 ];

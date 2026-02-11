@@ -71,5 +71,25 @@ export const tests = [
   {
     input: ["Madam"],
     expected: true
+  },
+  {
+    input: ["Was it a car or a cat I saw?"],
+    expected: true
+  },
+  {
+    input: [".,!@#$%"],
+    expected: true
+  },
+  {
+    input: ["12321"],
+    expected: true
+  },
+  {
+    input: ["abcba"],
+    expected: true
+  },
+  {
+    input: ["abccba"],
+    expected: true
   }
 ];

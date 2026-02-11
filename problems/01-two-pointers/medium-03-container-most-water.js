@@ -77,6 +77,31 @@ export const tests = [
   {
     input: [[5,2,12,14,3,16,10]],
     expected: 72
+  },
+  // Boundary: two elements
+  {
+    input: [[5,10]],
+    expected: 5
+  },
+  // All same height
+  {
+    input: [[7,7,7,7,7,7,7]],
+    expected: 42
+  },
+  // Ascending then descending (peak in middle)
+  {
+    input: [[1,2,3,4,5,4,3,2,1]],
+    expected: 8
+  },
+  // Zeros in the middle
+  {
+    input: [[10,0,0,0,0,0,0,0,10]],
+    expected: 80
+  },
+  // Larger input: 20 elements, alternating pattern
+  {
+    input: [[1,100,1,100,1,100,1,100,1,100,1,100,1,100,1,100,1,100,1,100]],
+    expected: 1800
   }
 ];
 

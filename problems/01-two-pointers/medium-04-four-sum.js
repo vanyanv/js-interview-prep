@@ -76,6 +76,31 @@ export const tests = [
   {
     input: [[5,5,3,5,1,-5,1,-2], 4],
     expected: [[-5,1,3,5],[-2,1,1,5]]
+  },
+  // Boundary: exactly 4 elements that sum to target
+  {
+    input: [[1,2,3,4], 10],
+    expected: [[1,2,3,4]]
+  },
+  // All zeros target zero
+  {
+    input: [[0,0,0,0,0], 0],
+    expected: [[0,0,0,0]]
+  },
+  // All same values, target is 4x value
+  {
+    input: [[3,3,3,3,3,3], 12],
+    expected: [[3,3,3,3]]
+  },
+  // Negatives only
+  {
+    input: [[-5,-4,-3,-2,-1], -10],
+    expected: [[-5,-4,-2,1]]
+  },
+  // Three elements: not enough for quadruplet
+  {
+    input: [[1,2,3], 6],
+    expected: []
   }
 ];
 

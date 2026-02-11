@@ -87,6 +87,32 @@ export const tests = [
   {
     input: [[1,2,3,4,5], 3],
     expected: 2
+  },
+  // --- Additional rigorous test cases ---
+  {
+    // Two-element array, insert between
+    input: [[1,3], 2],
+    expected: 1
+  },
+  {
+    // Larger array with negatives, target present
+    input: [[-10,-5,0,5,10,15,20,25,30,35,40,45,50], 15],
+    expected: 5
+  },
+  {
+    // Larger array with negatives, target absent, insert in middle
+    input: [[-10,-5,0,5,10,15,20,25,30,35,40,45,50], 12],
+    expected: 5
+  },
+  {
+    // Target far below all elements (negative)
+    input: [[1,3,5,7,9,11,13,15,17,19], -5],
+    expected: 0
+  },
+  {
+    // Target far above all elements
+    input: [[1,3,5,7,9,11,13,15,17,19], 100],
+    expected: 10
   }
 ];
 

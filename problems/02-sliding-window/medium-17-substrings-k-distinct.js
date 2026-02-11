@@ -86,6 +86,23 @@ export const tests = [
   {
     input: ["abacadaeaf", 2],
     expected: 23
+  },
+  // --- NEW TEST CASES ---
+  {
+    input: ["a", 2],
+    expected: 0
+  },
+  {
+    input: ["ab", 2],
+    expected: 1
+  },
+  {
+    input: ["aaaaaaaaaaaaaaa", 1],
+    expected: 120
+  },
+  {
+    input: ["abcabc", 3],
+    expected: 3
   }
 ];
 

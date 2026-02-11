@@ -79,6 +79,31 @@ export const tests = [
   {
     input: ["cabwefgewcwaefgcf", "cae"],
     expected: "cwae"
+  },
+  // Boundary: single char not found
+  {
+    input: ["b", "a"],
+    expected: ""
+  },
+  // Duplicate chars in t requiring multiple occurrences
+  {
+    input: ["aaabbbccc", "abc"],
+    expected: "abbbc"
+  },
+  // t has heavy duplicates
+  {
+    input: ["aabbcc", "aabbc"],
+    expected: "aabbc"
+  },
+  // Larger input: answer at the end
+  {
+    input: ["xyzabcxyzabcxyzabc", "cab"],
+    expected: "cab"
+  },
+  // Mixed case: uppercase and lowercase are distinct
+  {
+    input: ["AaBbCc", "abc"],
+    expected: ""
   }
 ];
 

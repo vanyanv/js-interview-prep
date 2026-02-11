@@ -76,6 +76,31 @@ export const tests = [
   {
     input: [[-10,-5,0,1,3,8]],
     expected: [0,1,9,25,64,100]
+  },
+  // Boundary: two elements with negatives
+  {
+    input: [[-3,3]],
+    expected: [9,9]
+  },
+  // All-same values
+  {
+    input: [[-2,-2,-2,-2]],
+    expected: [4,4,4,4]
+  },
+  // Larger input (20 elements), all negative reversed
+  {
+    input: [[-20,-18,-16,-14,-12,-10,-8,-6,-4,-2,-1,0,1,3,5,7,9,11,13,15]],
+    expected: [0,1,1,4,4,9,25,36,49,64,81,100,121,144,169,196,225,256,324,400]
+  },
+  // Zeros
+  {
+    input: [[0,0,0,0,0]],
+    expected: [0,0,0,0,0]
+  },
+  // Heavy duplicates with negatives and positives
+  {
+    input: [[-5,-5,-5,0,5,5,5]],
+    expected: [0,25,25,25,25,25,25]
   }
 ];
 

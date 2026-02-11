@@ -87,6 +87,23 @@ export const tests = [
   {
     input: [[1,2,3,2,1], 3],
     expected: 3
+  },
+  // --- NEW TEST CASES ---
+  {
+    input: [[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], 1],
+    expected: 120
+  },
+  {
+    input: [[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], 15],
+    expected: 1
+  },
+  {
+    input: [[1,2,1,2,1,2,1,2,1,2,3], 3],
+    expected: 9
+  },
+  {
+    input: [[2,1], 1],
+    expected: 2
   }
 ];
 

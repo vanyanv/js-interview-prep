@@ -87,6 +87,31 @@ export const tests = [
   {
     input: ["2.0", "1.9.9.9.9.9.9"],
     expected: 1
+  },
+  // Boundary: single digit versions
+  {
+    input: ["0", "0"],
+    expected: 0
+  },
+  // Leading zeros in multiple segments
+  {
+    input: ["0001.0002.0003", "1.2.3"],
+    expected: 0
+  },
+  // Trailing zeros should not matter
+  {
+    input: ["1.0.0.0.0", "1"],
+    expected: 0
+  },
+  // Large revision numbers
+  {
+    input: ["1.999999999", "1.999999998"],
+    expected: 1
+  },
+  // Many segments, difference in last
+  {
+    input: ["1.2.3.4.5.6.7", "1.2.3.4.5.6.8"],
+    expected: -1
   }
 ];
 

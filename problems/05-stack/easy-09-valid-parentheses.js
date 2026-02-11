@@ -56,7 +56,7 @@ export const tests = [
     expected: true
   },
   {
-    input: ["()[]{]"],
+    input: ["()[]{}"],
     expected: true
   },
   {

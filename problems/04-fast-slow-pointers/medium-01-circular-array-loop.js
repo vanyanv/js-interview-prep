@@ -96,5 +96,21 @@ export const tests = [
   {
     input: [[3, 1, 2]],
     expected: true
+  },
+  {
+    input: [[2, 2, 2, 2]],
+    expected: true
+  },
+  {
+    input: [[1]],
+    expected: false
+  },
+  {
+    input: [[-1, -1, -1, -1, -1]],
+    expected: true
+  },
+  {
+    input: [[1, -1]],
+    expected: false
   }
 ];
