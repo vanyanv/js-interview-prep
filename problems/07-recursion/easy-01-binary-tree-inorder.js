@@ -101,6 +101,26 @@ export const tests = [
   {
     input: [{val: 1, left: {val: 2, left: {val: 3, left: null, right: null}, right: null}, right: null}],
     expected: [3, 2, 1]
+  },
+  // Right-skewed chain: 1 -> 2 -> 3 -> 4 (worst-case right-only tree)
+  {
+    input: [{val: 1, left: null, right: {val: 2, left: null, right: {val: 3, left: null, right: {val: 4, left: null, right: null}}}}],
+    expected: [1, 2, 3, 4]
+  },
+  // All-same-values tree
+  {
+    input: [{val: 5, left: {val: 5, left: {val: 5, left: null, right: null}, right: {val: 5, left: null, right: null}}, right: {val: 5, left: {val: 5, left: null, right: null}, right: {val: 5, left: null, right: null}}}],
+    expected: [5, 5, 5, 5, 5, 5, 5]
+  },
+  // Negative values tree
+  {
+    input: [{val: 0, left: {val: -2, left: {val: -3, left: null, right: null}, right: {val: -1, left: null, right: null}}, right: {val: 2, left: {val: 1, left: null, right: null}, right: {val: 3, left: null, right: null}}}],
+    expected: [-3, -2, -1, 0, 1, 2, 3]
+  },
+  // Larger tree (4 levels, 15 nodes - perfect binary tree)
+  {
+    input: [{val: 8, left: {val: 4, left: {val: 2, left: {val: 1, left: null, right: null}, right: {val: 3, left: null, right: null}}, right: {val: 6, left: {val: 5, left: null, right: null}, right: {val: 7, left: null, right: null}}}, right: {val: 12, left: {val: 10, left: {val: 9, left: null, right: null}, right: {val: 11, left: null, right: null}}, right: {val: 14, left: {val: 13, left: null, right: null}, right: {val: 15, left: null, right: null}}}}],
+    expected: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
   }
 ];
 

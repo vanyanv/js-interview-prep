@@ -79,6 +79,31 @@ export const tests = [
   {
     input: [[[5,10]], [[5,6],[13,15]]],
     expected: [[5,6]]
+  },
+  // Edge: identical interval lists — full overlap
+  {
+    input: [[[1,5],[10,15]], [[1,5],[10,15]]],
+    expected: [[1,5],[10,15]]
+  },
+  // Edge: single-point intervals that touch
+  {
+    input: [[[3,3],[6,6],[9,9]], [[3,3],[5,7]]],
+    expected: [[3,3],[6,6]]
+  },
+  // Edge: one list is a single large interval covering all of the other
+  {
+    input: [[[0,100]], [[5,10],[20,30],[50,60],[70,80]]],
+    expected: [[5,10],[20,30],[50,60],[70,80]]
+  },
+  // Edge: no overlap at all — disjoint lists
+  {
+    input: [[[1,2],[5,6]], [[3,4],[7,8]]],
+    expected: []
+  },
+  // Larger input: many small intervals intersecting a few large ones
+  {
+    input: [[[0,3],[6,9],[12,15],[18,21],[24,27]], [[1,7],[10,20],[25,30]]],
+    expected: [[1,3],[6,7],[12,15],[18,20],[25,27]]
   }
 ];
 

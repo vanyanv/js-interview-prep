@@ -84,6 +84,31 @@ export const tests = [
   {
     input: ["ab", "a#b"],
     expected: false
+  },
+  // Edge: many consecutive backspaces beyond string length
+  {
+    input: ["####", "######"],
+    expected: true
+  },
+  // Larger input: both reduce to same string via different paths
+  {
+    input: ["abc##de#f", "af"],
+    expected: true
+  },
+  // All-same characters with selective backspaces
+  {
+    input: ["aaa###a", "a"],
+    expected: true
+  },
+  // Longer strings that differ only at the end after processing
+  {
+    input: ["abcdef", "abcdeg#f"],
+    expected: true
+  },
+  // Backspace at very start vs normal string
+  {
+    input: ["#a#b#c", "c"],
+    expected: true
   }
 ];
 

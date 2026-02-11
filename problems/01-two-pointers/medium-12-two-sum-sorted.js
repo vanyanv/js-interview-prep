@@ -65,5 +65,30 @@ export const tests = [
   {
     input: [[5, 25, 75], 100],
     expected: [2, 3]
+  },
+  // Two elements — minimum length input
+  {
+    input: [[1, 3], 4],
+    expected: [1, 2]
+  },
+  // Negative numbers in sorted order
+  {
+    input: [[-10, -5, -3, 0, 2, 7, 15], -8],
+    expected: [2, 3]
+  },
+  // All same values — pair at adjacent positions
+  {
+    input: [[3, 3, 3, 3], 6],
+    expected: [1, 2]
+  },
+  // Answer at the extreme ends of the array
+  {
+    input: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 11],
+    expected: [1, 10]
+  },
+  // Larger input — answer near the middle
+  {
+    input: [[1, 2, 4, 5, 6, 8, 9, 11, 14, 17, 20], 13],
+    expected: [4, 7]
   }
 ];

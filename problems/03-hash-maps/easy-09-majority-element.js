@@ -76,5 +76,25 @@ export const tests = [
   {
     input: [[8, 8, 7, 7, 7]],
     expected: 7
+  },
+  // All-same-values
+  {
+    input: [[5, 5, 5, 5, 5]],
+    expected: 5
+  },
+  // Majority element interleaved with others
+  {
+    input: [[1, 2, 1, 2, 1, 2, 1]],
+    expected: 1
+  },
+  // Larger array with clear majority
+  {
+    input: [[3, 3, 3, 3, 3, 1, 2, 4, 5]],
+    expected: 3
+  },
+  // Two elements, majority at front
+  {
+    input: [[9, 9, 8]],
+    expected: 9
   }
 ];

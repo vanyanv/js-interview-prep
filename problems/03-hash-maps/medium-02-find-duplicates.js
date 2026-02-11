@@ -78,5 +78,25 @@ export const tests = [
   {
     input: [[10, 2, 5, 10, 9, 1, 1, 4, 3, 7]],
     expected: [1, 10]
+  },
+  // All elements are duplicates (every number appears twice)
+  {
+    input: [[1, 2, 3, 4, 1, 2, 3, 4]],
+    expected: [1, 2, 3, 4]
+  },
+  // No duplicates at all
+  {
+    input: [[3, 1, 4, 2, 5]],
+    expected: []
+  },
+  // Two elements, no duplicate
+  {
+    input: [[1, 2]],
+    expected: []
+  },
+  // Larger input with duplicates scattered throughout
+  {
+    input: [[7, 3, 1, 5, 9, 2, 8, 6, 4, 10, 3, 7, 10, 9]],
+    expected: [3, 7, 9, 10]
   }
 ];

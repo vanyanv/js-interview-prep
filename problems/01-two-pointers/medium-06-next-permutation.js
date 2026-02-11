@@ -81,6 +81,31 @@ export const tests = [
   {
     input: [[1,5,1]],
     expected: [5,1,1]
+  },
+  // All same values — already the last permutation, wraps to itself
+  {
+    input: [[2,2,2,2]],
+    expected: [2,2,2,2]
+  },
+  // Worst case: fully descending except first element
+  {
+    input: [[1,5,4,3,2]],
+    expected: [2,1,3,4,5]
+  },
+  // Permutation with duplicates in the middle
+  {
+    input: [[2,3,1,3,3]],
+    expected: [2,3,3,1,3]
+  },
+  // Larger input: ascending sequence
+  {
+    input: [[1,2,3,4,5,6]],
+    expected: [1,2,3,4,6,5]
+  },
+  // Larger input: fully descending — wraps to ascending
+  {
+    input: [[6,5,4,3,2,1]],
+    expected: [1,2,3,4,5,6]
   }
 ];
 

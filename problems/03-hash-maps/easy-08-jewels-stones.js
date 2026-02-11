@@ -78,5 +78,25 @@ export const tests = [
   {
     input: ["aA", "aA"],
     expected: 2
+  },
+  // All stones are jewels
+  {
+    input: ["abc", "aabbcc"],
+    expected: 6
+  },
+  // All-same stones, all are jewels
+  {
+    input: ["x", "xxxxxxxx"],
+    expected: 8
+  },
+  // Case sensitivity: lowercase jewels don't match uppercase stones
+  {
+    input: ["abc", "ABC"],
+    expected: 0
+  },
+  // Single jewel, single stone, match
+  {
+    input: ["a", "a"],
+    expected: 1
   }
 ];

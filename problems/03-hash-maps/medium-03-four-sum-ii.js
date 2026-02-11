@@ -80,5 +80,33 @@ export const tests = [
   {
     input: [[1, -2, 3], [-1, 2, -3], [0, 1, -1], [-1, 0, 1]],
     expected: 12
+  },
+  // No tuples sum to zero
+  {
+    input: [[1, 2], [3, 4], [5, 6], [7, 8]],
+    expected: 0
+  },
+  // Single element arrays that do sum to zero
+  {
+    input: [[5], [-3], [-7], [5]],
+    expected: 1
+  },
+  // Single element arrays that don't sum to zero
+  {
+    input: [[1], [2], [3], [4]],
+    expected: 0
+  },
+  // All same values, all zeros - every combination sums to 0: 2^4 = 16
+  {
+    input: [[0, 0], [0, 0], [0, 0], [0, 0]],
+    expected: 16
+  },
+  // Larger arrays with symmetrical values
+  // nums1+nums2 sums: -2(1), -1(2), 0(3), 1(2), 2(1)
+  // nums3+nums4 sums: -2(1), -1(2), 0(3), 1(2), 2(1)
+  // count = 1*1 + 2*2 + 3*3 + 2*2 + 1*1 = 1+4+9+4+1 = 19
+  {
+    input: [[-1, 0, 1], [-1, 0, 1], [1, 0, -1], [1, 0, -1]],
+    expected: 19
   }
 ];

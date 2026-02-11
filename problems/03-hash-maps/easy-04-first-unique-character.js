@@ -73,5 +73,30 @@ export const tests = [
   {
     input: ["dddccdbba"],
     expected: 8
+  },
+  // All-same-values: every character identical
+  {
+    input: ["aaaaaa"],
+    expected: -1
+  },
+  // Unique character is the very last one
+  {
+    input: ["aabbccd"],
+    expected: 6
+  },
+  // Every character is unique
+  {
+    input: ["abcdefghijklmnopqrstuvwxyz"],
+    expected: 0
+  },
+  // Two characters, first is unique
+  {
+    input: ["ab"],
+    expected: 0
+  },
+  // Longer string with unique buried in the middle
+  {
+    input: ["aabbbccddeeffggh"],
+    expected: 0
   }
 ];

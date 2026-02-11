@@ -77,6 +77,31 @@ export const tests = [
   {
     input: ["qiejxqfnqceocmy"],
     expected: [13,1,1]
+  },
+  // All same character — one big partition
+  {
+    input: ["aaaaaaa"],
+    expected: [7]
+  },
+  // Every character unique — each is its own partition
+  {
+    input: ["abcdefgh"],
+    expected: [1,1,1,1,1,1,1,1]
+  },
+  // Two distinct partitions with clear boundaries
+  {
+    input: ["abcadefed"],
+    expected: [4,5]
+  },
+  // Single character
+  {
+    input: ["z"],
+    expected: [1]
+  },
+  // Longer input: repeating pattern that forces large partitions
+  {
+    input: ["aabbccddeeaabbccddee"],
+    expected: [20]
   }
 ];
 

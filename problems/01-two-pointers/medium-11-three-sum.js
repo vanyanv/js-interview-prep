@@ -58,5 +58,30 @@ export const tests = [
   {
     input: [[]],
     expected: []
+  },
+  // All same negative values — no triplet sums to zero
+  {
+    input: [[-1,-1,-1,-1]],
+    expected: []
+  },
+  // All zeros — one triplet
+  {
+    input: [[0,0,0,0,0]],
+    expected: [[0,0,0]]
+  },
+  // Multiple triplets with duplicates in the input
+  {
+    input: [[-2,-1,-1,0,1,2,2]],
+    expected: [[-2,0,2],[-1,-1,2],[-1,0,1]]
+  },
+  // Only 3 elements that sum to 0
+  {
+    input: [[-5,0,5]],
+    expected: [[-5,0,5]]
+  },
+  // No valid triplets — all positive
+  {
+    input: [[1,2,3,4,5]],
+    expected: []
   }
 ];

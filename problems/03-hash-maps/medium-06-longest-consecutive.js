@@ -76,5 +76,25 @@ export const tests = [
   {
     input: [[-1, 1, 0]],
     expected: 3
+  },
+  // All same values - longest consecutive is just 1
+  {
+    input: [[5, 5, 5, 5, 5]],
+    expected: 1
+  },
+  // Large gap between two consecutive sequences
+  {
+    input: [[1, 2, 3, 100, 101, 102, 103]],
+    expected: 4
+  },
+  // Negative numbers forming a consecutive sequence
+  {
+    input: [[-5, -4, -3, -2, -1, 10, 20]],
+    expected: 5
+  },
+  // Duplicates within a long consecutive sequence
+  {
+    input: [[1, 2, 2, 3, 3, 4, 5, 5, 6, 7, 8, 8, 9, 10]],
+    expected: 10
   }
 ];

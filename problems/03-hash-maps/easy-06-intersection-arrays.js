@@ -74,5 +74,25 @@ export const tests = [
   {
     input: [[1, 1, 1], [1]],
     expected: [1]
+  },
+  // Both arrays identical
+  {
+    input: [[3, 3, 3], [3, 3, 3]],
+    expected: [3]
+  },
+  // Both empty arrays
+  {
+    input: [[], []],
+    expected: []
+  },
+  // Larger arrays with partial overlap
+  {
+    input: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [5, 10, 15, 20, 25]],
+    expected: [5, 10]
+  },
+  // All-same-values in both arrays, same value
+  {
+    input: [[7, 7, 7, 7], [7, 7]],
+    expected: [7]
   }
 ];

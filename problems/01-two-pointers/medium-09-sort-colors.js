@@ -80,6 +80,31 @@ export const tests = [
   {
     input: [[0,1,2,0,1,2]],
     expected: [0,0,1,1,2,2]
+  },
+  // All same value: all 0s
+  {
+    input: [[0,0,0,0]],
+    expected: [0,0,0,0]
+  },
+  // All same value: all 2s
+  {
+    input: [[2,2,2,2]],
+    expected: [2,2,2,2]
+  },
+  // Already sorted
+  {
+    input: [[0,0,1,1,2,2]],
+    expected: [0,0,1,1,2,2]
+  },
+  // Reverse sorted (worst case for Dutch National Flag)
+  {
+    input: [[2,2,1,1,0,0]],
+    expected: [0,0,1,1,2,2]
+  },
+  // Larger input with mixed distribution
+  {
+    input: [[2,0,1,0,2,1,0,2,1,0,1,2]],
+    expected: [0,0,0,0,1,1,1,1,2,2,2,2]
   }
 ];
 

@@ -95,6 +95,31 @@ export const tests = [
   {
     input: ["abcd", ["a","abc","b","cd"]],
     expected: true
+  },
+  // Cannot segment — leftover characters
+  {
+    input: ["abcdef", ["ab","cd"]],
+    expected: false
+  },
+  // Single character not in dictionary
+  {
+    input: ["b", ["a","c"]],
+    expected: false
+  },
+  // Entire string is one dictionary word
+  {
+    input: ["hello", ["hello"]],
+    expected: true
+  },
+  // Overlapping words — must choose correct split (backtracking-heavy)
+  {
+    input: ["catsanddog", ["cats","cat","sand","and","dog"]],
+    expected: true
+  },
+  // Worst-case pattern: many a's with no valid segmentation
+  {
+    input: ["aaaaaaaaab", ["a","aa","aaa","aaaa","aaaaa"]],
+    expected: false
   }
 ];
 

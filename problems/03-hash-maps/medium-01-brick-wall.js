@@ -81,5 +81,28 @@ export const tests = [
   {
     input: [[[5, 5, 5], [3, 7, 5], [2, 8, 5], [1, 9, 5]]],
     expected: 0
+  },
+  // Edge case: single row, single brick (no edges to align, must cross 1)
+  {
+    input: [[[5]]],
+    expected: 1
+  },
+  // All rows identical bricks - every edge aligns, crosses 0
+  {
+    input: [[[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]]],
+    expected: 0
+  },
+  // Worst case: no two rows share an edge position
+  {
+    input: [[[1, 5], [2, 4], [3, 3], [4, 2], [5, 1]]],
+    expected: 1
+  },
+  // Larger wall with varying brick sizes; edges at positions:
+  // Row 0: 1,3,6  Row 1: 2,4,6  Row 2: 3,6  Row 3: 1,2,3,4,5,6
+  // Position 3 appears in rows 0,2,3 => freq 3, position 6 is wall end (excluded)
+  // min crossings = 4 - 3 = 1
+  {
+    input: [[[1, 2, 3, 1], [2, 2, 2, 1], [3, 3, 1], [1, 1, 1, 1, 1, 1, 1]]],
+    expected: 1
   }
 ];

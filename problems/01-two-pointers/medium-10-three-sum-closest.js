@@ -76,6 +76,31 @@ export const tests = [
   {
     input: [[-3,-2,-5,3,-4], -1],
     expected: -2
+  },
+  // All same values
+  {
+    input: [[5,5,5,5], 15],
+    expected: 15
+  },
+  // Minimum length array (exactly 3 elements)
+  {
+    input: [[100,-100,0], 1],
+    expected: 0
+  },
+  // Target is very large — picks the three largest
+  {
+    input: [[1,2,3,4,5], 100],
+    expected: 12
+  },
+  // Target is very negative — picks the three smallest
+  {
+    input: [[-10,-8,-6,1,2,3], -100],
+    expected: -24
+  },
+  // Larger input with exact match possible
+  {
+    input: [[-4,-2,-1,0,1,3,5,7], 4],
+    expected: 4
   }
 ];
 

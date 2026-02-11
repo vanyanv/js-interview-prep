@@ -69,5 +69,30 @@ export const tests = [
   {
     input: [[]],
     expected: false
+  },
+  // All-same-values: every element identical
+  {
+    input: [[5, 5, 5, 5, 5]],
+    expected: true
+  },
+  // Duplicate only at the very end of a larger array
+  {
+    input: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1]],
+    expected: true
+  },
+  // Larger input with no duplicates
+  {
+    input: [[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]],
+    expected: false
+  },
+  // Negative and positive boundary values mixed, duplicate at extremes
+  {
+    input: [[-1000000000, 1000000000, 0, -1000000000]],
+    expected: true
+  },
+  // Two elements, no duplicate
+  {
+    input: [[1, 2]],
+    expected: false
   }
 ];

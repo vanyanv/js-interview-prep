@@ -78,5 +78,25 @@ export const tests = [
   {
     input: ["a", "ba"],
     expected: "b"
+  },
+  // All-same-values: s is all one character, one more added
+  {
+    input: ["aaaa", "aaaaa"],
+    expected: "a"
+  },
+  // All 26 letters present, added letter is 'z'
+  {
+    input: ["abcdefghijklmnopqrstuvwxy", "abcdefghijklmnopqrstuvwxyz"],
+    expected: "z"
+  },
+  // Added letter is the very first character alphabetically
+  {
+    input: ["bcdef", "abcdef"],
+    expected: "a"
+  },
+  // Single char in s, different char added
+  {
+    input: ["z", "za"],
+    expected: "a"
   }
 ];

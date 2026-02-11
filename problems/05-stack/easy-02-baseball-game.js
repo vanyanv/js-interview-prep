@@ -102,6 +102,31 @@ export const tests = [
   {
     input: [["36","28","70","65","C","+","33","-46","84","C"]],
     expected: 257
+  },
+  // All same values with D and + operations
+  // [5] -> [5,5] -> [5,5,10] -> [5,5,10,15] => sum = 35
+  {
+    input: [["5","5","D","+"]],
+    expected: 35
+  },
+  // Negative numbers with D and + operations
+  // [-3] -> [-3,-6] -> [-3,-6,-9] => sum = -18
+  {
+    input: [["-3","D","+"]],
+    expected: -18
+  },
+  // Alternating add and cancel — everything cancels out
+  // [1] -> [] -> [2] -> [] -> [3] -> [] => sum = 0
+  {
+    input: [["1","C","2","C","3","C"]],
+    expected: 0
+  },
+  // Larger sequence with all operation types
+  // [1] -> [1,2] -> [1,2,3] -> [1,2,3,5] -> [1,2,3] -> [1,2,3,6] -> [1,2,3,6,9]
+  // sum = 1+2+3+6+9 = 21
+  {
+    input: [["1","2","3","+","C","D","+"]],
+    expected: 21
   }
 ];
 

@@ -82,5 +82,30 @@ export const tests = [
   {
     input: [20],
     expected: false
+  },
+  // Larger happy number: 100 -> 1
+  {
+    input: [100],
+    expected: true
+  },
+  // 3-digit unhappy number entering cycle: 2->4->16->37->58->89->145->42->20->4 cycle
+  {
+    input: [89],
+    expected: false
+  },
+  // Large happy number: 1000 -> 1
+  {
+    input: [1000],
+    expected: true
+  },
+  // Happy number 44: 4^2+4^2=32, 9+4=13, 1+9=10, 1+0=1
+  {
+    input: [44],
+    expected: true
+  },
+  // Boundary: 10 -> 1+0=1 -> happy
+  {
+    input: [10],
+    expected: true
   }
 ];

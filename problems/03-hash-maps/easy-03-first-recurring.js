@@ -79,5 +79,25 @@ export const tests = [
   {
     input: ["programming"],
     expected: "r"
+  },
+  // All-same-values: every character identical
+  {
+    input: ["zzzzz"],
+    expected: "z"
+  },
+  // Two characters, immediate repeat
+  {
+    input: ["aa"],
+    expected: "a"
+  },
+  // Larger input: all 26 letters then repeat first
+  {
+    input: ["abcdefghijklmnopqrstuvwxyza"],
+    expected: "a"
+  },
+  // Recurring character only at the very end
+  {
+    input: ["abcdefghb"],
+    expected: "b"
   }
 ];

@@ -77,6 +77,31 @@ export const tests = [
   {
     input: [[1,3,2,4,5]],
     expected: 2
+  },
+  // All same values — already sorted
+  {
+    input: [[5,5,5,5,5]],
+    expected: 0
+  },
+  // Entire array reversed — must sort the whole thing
+  {
+    input: [[5,4,3,2,1]],
+    expected: 5
+  },
+  // Only the last element is out of place, needs to extend back
+  {
+    input: [[1,2,3,5,4]],
+    expected: 2
+  },
+  // Negative numbers with unsorted middle
+  {
+    input: [[-5,-3,-4,-2,0,1]],
+    expected: 2
+  },
+  // Larger input: sorted except one element displaced to the end
+  {
+    input: [[1,2,3,4,5,6,7,8,9,0]],
+    expected: 10
   }
 ];
 

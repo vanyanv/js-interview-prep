@@ -80,5 +80,30 @@ export const tests = [
   {
     input: ["abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz"],
     expected: true
+  },
+  // All-same-values: both strings are one repeated character
+  {
+    input: ["aaaa", "bbbb"],
+    expected: true
+  },
+  // Single character strings
+  {
+    input: ["a", "z"],
+    expected: true
+  },
+  // Mapping conflict in reverse direction: a->a, b->a fails (two chars map to same)
+  {
+    input: ["ab", "aa"],
+    expected: false
+  },
+  // Longer palindromic pattern mapping
+  {
+    input: ["abcba", "xyzyx"],
+    expected: true
+  },
+  // All same in s but different in t
+  {
+    input: ["aaa", "abc"],
+    expected: false
   }
 ];

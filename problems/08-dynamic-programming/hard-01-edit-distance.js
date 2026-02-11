@@ -105,6 +105,31 @@ export const tests = [
   {
     input: ["ab", "a"],
     expected: 1
+  },
+  // Both strings empty — zero operations
+  {
+    input: ["", ""],
+    expected: 0
+  },
+  // All same characters vs completely different — all replacements
+  {
+    input: ["aaaa", "bbbb"],
+    expected: 4
+  },
+  // Anagram — same letters, different order (requires swaps via replace/insert/delete)
+  {
+    input: ["abcde", "edcba"],
+    expected: 4
+  },
+  // One string is a subsequence of the other — only insertions needed
+  {
+    input: ["ace", "abcde"],
+    expected: 2
+  },
+  // Longer realistic example
+  {
+    input: ["saturday", "sunday"],
+    expected: 3
   }
 ];
 

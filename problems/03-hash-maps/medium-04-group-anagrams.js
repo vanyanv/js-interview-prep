@@ -73,5 +73,25 @@ export const tests = [
   {
     input: [["listen", "silent", "hello", "world"]],
     expected: [["listen", "silent"], ["hello"], ["world"]]
+  },
+  // All empty strings - all are anagrams of each other
+  {
+    input: [["", "", ""]],
+    expected: [["", "", ""]]
+  },
+  // No anagrams - every string is unique group
+  {
+    input: [["abc", "def", "ghi"]],
+    expected: [["abc"], ["def"], ["ghi"]]
+  },
+  // All same characters but different lengths - should NOT be grouped together
+  {
+    input: [["a", "aa", "aaa", "a"]],
+    expected: [["a", "a"], ["aa"], ["aaa"]]
+  },
+  // Larger input with multiple anagram groups of varying sizes
+  {
+    input: [["rat", "tar", "art", "star", "tars", "rats", "arts", "z"]],
+    expected: [["rat", "tar", "art"], ["star", "tars", "rats", "arts"], ["z"]]
   }
 ];

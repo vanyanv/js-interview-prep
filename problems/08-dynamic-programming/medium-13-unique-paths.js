@@ -98,6 +98,26 @@ export const tests = [
   {
     input: [4, 4],
     expected: 20
+  },
+  // Square grid: 5x5 = C(8,4) = 70
+  {
+    input: [5, 5],
+    expected: 70
+  },
+  // Rectangular: 2x10 — only 1 way down means n paths
+  {
+    input: [2, 10],
+    expected: 10
+  },
+  // Larger grid: 10x10 = C(18,9) = 48620
+  {
+    input: [10, 10],
+    expected: 48620
+  },
+  // Asymmetric larger grid: 3x15 = C(16,2) = 120
+  {
+    input: [3, 15],
+    expected: 120
   }
 ];
 

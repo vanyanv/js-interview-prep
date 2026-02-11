@@ -74,5 +74,25 @@ export const tests = [
   {
     input: [[2, 0]],
     expected: 1
+  },
+  // Larger sequential array missing a middle value
+  {
+    input: [[0, 1, 2, 3, 4, 5, 6, 7, 9, 10]],
+    expected: 8
+  },
+  // All elements present except 0 (boundary: missing is 0)
+  {
+    input: [[3, 1, 2]],
+    expected: 0
+  },
+  // Missing the last number (n)
+  {
+    input: [[0, 1, 2, 3, 4, 5, 6, 7, 8]],
+    expected: 9
+  },
+  // Single element [0], missing 1
+  {
+    input: [[0]],
+    expected: 1
   }
 ];

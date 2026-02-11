@@ -77,5 +77,26 @@ export const tests = [
   {
     input: [["plpaboutit", "jnoqzdute", "sfvkdqf", "mjc", "nkpllqzjzp", "foqqenbey", "ssnanizsav", "nkpllqzjzp", "sfvkdqf", "isnjmy", "pnqsz", "hhqpvvt", "fvvdtpnzx", "jkqonvenhx", "cyxendjzwz", "hhqpvvt", "fvvdtpnzx", "plpaboutit", "sfvkdqf", "mjc", "fvvdtpnzx", "bwumsj", "foqqenbey", "isnjmy", "nkpllqzjzp", "hhqpvvt", "foqqenbey", "fvvdtpnzx", "bwumsj", "hhqpvvt", "fvvdtpnzx", "jkqonvenhx", "jnoqzdute", "foqqenbey", "jnoqzdute", "foqqenbey", "hhqpvvt", "ssnanizsav", "mjc", "foqqenbey", "bwumsj", "ssnanizsav", "fvvdtpnzx", "nkpllqzjzp", "jkqonvenhx", "hhqpvvt", "mjc", "isnjmy", "bwumsj", "pnqsz", "hhqpvvt", "nkpllqzjzp", "jnoqzdute", "pnqsz", "nkpllqzjzp", "jnoqzdute", "foqqenbey", "nkpllqzjzp", "hhqpvvt", "fvvdtpnzx", "plpaboutit", "jnoqzdute", "sfvkdqf", "fvvdtpnzx", "jkqonvenhx", "jnoqzdute", "nkpllqzjzp", "jnoqzdute", "fvvdtpnzx", "jkqonvenhx", "hhqpvvt", "isnjmy", "jnoqzdute", "ssnanizsav", "jnoqzdute", "fvvdtpnzx", "hhqpvvt", "bwumsj", "nkpllqzjzp", "bwumsj", "jkqonvenhx", "jnoqzdute", "pnqsz", "foqqenbey", "sfvkdqf", "sfvkdqf"], 1],
     expected: ["fvvdtpnzx"]
+  },
+  // Single word - k=1
+  {
+    input: [["hello"], 1],
+    expected: ["hello"]
+  },
+  // All same word repeated - k=1
+  {
+    input: [["aaa", "aaa", "aaa", "aaa"], 1],
+    expected: ["aaa"]
+  },
+  // All words have same frequency - should sort lexicographically
+  {
+    input: [["d", "b", "c", "a"], 3],
+    expected: ["a", "b", "c"]
+  },
+  // Tie in frequency, lexicographic order determines ranking
+  // "b" x3, "a" x3, "c" x1 => k=2 => ["a","b"] (same freq, lex order)
+  {
+    input: [["b", "a", "b", "a", "b", "a", "c"], 2],
+    expected: ["a", "b"]
   }
 ];
