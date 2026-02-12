@@ -4,7 +4,7 @@ import path from 'path';
 
 export async function GET() {
   try {
-    const problemsDir = path.join(process.cwd(), '..', 'problems');
+    const problemsDir = path.join(process.cwd(), 'problems');
     
     if (!fs.existsSync(problemsDir)) {
       return NextResponse.json({ error: 'Problems directory not found' }, { status: 404 });

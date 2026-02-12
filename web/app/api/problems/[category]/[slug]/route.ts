@@ -8,7 +8,7 @@ export async function GET(
 ) {
   try {
     const { category, slug } = await params;
-    const problemsDir = path.join(process.cwd(), '..', 'problems');
+    const problemsDir = path.join(process.cwd(), 'problems');
     const filePath = path.join(problemsDir, category, `${slug}.js`);
 
     if (!fs.existsSync(filePath)) {
