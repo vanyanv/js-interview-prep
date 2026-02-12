@@ -63,6 +63,7 @@ export default function ProblemWorkspace({ params }: ProblemWorkspaceProps) {
         body: JSON.stringify({
           code,
           problemName: problem.slug, // using slug as filename base
+          category: problem.category,
           language
         }),
       });
