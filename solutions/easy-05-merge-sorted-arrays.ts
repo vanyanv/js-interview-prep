@@ -53,8 +53,41 @@ Pattern Notes:
 
 export const functionName = 'merge';
 
-export const merge = (nums1: number[]) => {
-  return num1;
+export const merge = (
+  nums1: number[],
+  m: number,
+  nums2: number[],
+  n: number,
+): number[] => {
+  if (m < 1) return nums2;
+  if (n < 1) return nums1;
+  //the end of nums1 array
+  let end1 = m - 1;
+  //the end of nums2 array
+  let end2 = n - 1;
+  //the end of the final arrays
+  let endTotal = m + n - 1;
+
+  while (end1 >= 0 && end2 >= 0) {
+    if (nums2[end2] > nums1[end1]) {
+      nums1[endTotal] = nums2[end2];
+
+      end2--;
+    } else {
+      nums1[endTotal] = nums1[end1];
+
+      end1--;
+    }
+    endTotal--;
+  }
+
+  while (end2 >= 0) {
+    nums1[endTotal] = nums2[end2];
+    endTotal--;
+    end2--;
+  }
+
+  return nums1;
 };
 
 export const tests = [
@@ -103,39 +136,3 @@ export const tests = [
     expected: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   },
 ];
-
-/**
- * Merges two sorted arrays in-place
- * @param {number[]} nums1 - First sorted array with extra space
- * @param {number} m - Number of elements in nums1
- * @param {number[]} nums2 - Second sorted array
- * @param {number} n - Number of elements in nums2
- * @return {void} Do not return anything, modify nums1 in-place instead.
- */ function merge(nums1: number[], m: number, nums2: number[], n: number) {
-  // Three pointers approach - work backwards
-  let p1 = m - 1; // Pointer for last element in nums1
-  let p2 = n - 1; // Pointer for last element in nums2
-  let p = m + n - 1; // Pointer for last position in merged array
-
-  // Merge from the back to avoid overwriting
-  while (p1 >= 0 && p2 >= 0) {
-    if (nums1[p1] > nums2[p2]) {
-      nums1[p] = nums1[p1];
-      p1--;
-    } else {
-      nums1[p] = nums2[p2];
-      p2--;
-    }
-    p--;
-  }
-
-  // Copy remaining elements from nums2 (if any)
-  // No need to copy remaining from nums1 as they're already in place
-  while (p2 >= 0) {
-    nums1[p] = nums2[p2];
-    p2--;
-    p--;
-  }
-}
-
-export default merge;

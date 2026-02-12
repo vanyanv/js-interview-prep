@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import CodeEditor from './CodeEditor';
 import ConsoleOutput from './ConsoleOutput';
 import ProblemDescription from './ProblemDescription';
+import { CollaborationProvider } from './CollaborationProvider';
 
 interface ProblemWorkspaceProps {
   params: {
@@ -125,6 +126,7 @@ export default function ProblemWorkspace({ params }: ProblemWorkspaceProps) {
   }
 
   return (
+    <CollaborationProvider roomId={`${params.category}-${params.slug}`}>
     <div className="h-screen flex flex-col bg-slate-950 text-slate-200">
       {/* Header */}
       <header className="h-14 border-b border-slate-800 flex items-center justify-between px-6 bg-slate-900/50 backdrop-blur">
@@ -237,5 +239,6 @@ export default function ProblemWorkspace({ params }: ProblemWorkspaceProps) {
         )}
       </AnimatePresence>
     </div>
+    </CollaborationProvider>
   );
 }
