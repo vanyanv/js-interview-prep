@@ -46,19 +46,7 @@ Pattern Notes:
 
 export const functionName = 'isSubsequence';
 
-export const isSubsequence = (string1: string, string2: string): boolean => {
-  let pointer1: 0;
-  let pointer2: 0;
-
-  while (pointer1 < string1.length) {
-    
-  }
-
-  return false;
-
-
-  return true;
-}
+export const isSubsequence = (string1: string, string2: string) => {};
 
 export const tests = [
   {
