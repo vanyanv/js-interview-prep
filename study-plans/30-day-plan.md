@@ -80,13 +80,13 @@
 - Handle all variations (opposite, same direction, fixed + two)
 - Build speed and confidence
 
-**Day 8: Advanced Two Pointers** [X]
+**Day 8: Advanced Two Pointers** 
 
 - Study: Complex two-pointer scenarios
 - Problems: `easy-05-merge-sorted-arrays`, `easy-03-is-subsequence`
 - Pattern: Merging and subsequence checking
 
-**Day 9: Two Pointers - Palindromes**
+**Day 9: Two Pointers - Palindromes** [X]
 
 - Focus: Palindrome variations
 - Problems: `easy-12-valid-palindrome-ii`, `easy-10-reverse-vowels`

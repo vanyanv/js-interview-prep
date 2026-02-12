@@ -16,9 +16,10 @@ interface ProblemWorkspaceProps {
     category: string;
     slug: string;
   };
+  roomSessionId?: string;
 }
 
-export default function ProblemWorkspace({ params }: ProblemWorkspaceProps) {
+export default function ProblemWorkspace({ params, roomSessionId }: ProblemWorkspaceProps) {
   const [problem, setProblem] = useState<any>(null);
   const [code, setCode] = useState('');
   const [output, setOutput] = useState<string | null>(null);
@@ -109,6 +110,25 @@ export default function ProblemWorkspace({ params }: ProblemWorkspaceProps) {
     }
   };
 
+  // Use provided session ID or default to global room for this problem
+  const activeRoomId = roomSessionId || `${params.category}-${params.slug}`;
+  const isPrivateSession = !!roomSessionId;
+
+  const handleShare = () => {
+    // Generate a random session ID if not already in one
+    if (!isPrivateSession) {
+        const newSessionId = Math.random().toString(36).substring(2, 10);
+        const url = new URL(window.location.href);
+        url.searchParams.set('room', newSessionId);
+        window.location.href = url.toString();
+        return;
+    }
+    
+    // If already in private session, copy URL
+    navigator.clipboard.writeText(window.location.href);
+    alert('Session URL copied to clipboard!');
+  };
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen bg-slate-950 text-white">
@@ -126,7 +146,7 @@ export default function ProblemWorkspace({ params }: ProblemWorkspaceProps) {
   }
 
   return (
-    <CollaborationProvider roomId={`${params.category}-${params.slug}`}>
+    <CollaborationProvider roomId={activeRoomId}>
     <div className="h-screen flex flex-col bg-slate-950 text-slate-200">
       {/* Header */}
       <header className="h-14 border-b border-slate-800 flex items-center justify-between px-6 bg-slate-900/50 backdrop-blur">
@@ -137,9 +157,21 @@ export default function ProblemWorkspace({ params }: ProblemWorkspaceProps) {
           </Link>
           <div className="h-4 w-px bg-slate-700 mx-2" />
           <h1 className="font-semibold">{problem.slug}</h1>
+          {isPrivateSession && (
+             <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded border border-purple-500/30">
+                Private Session
+             </span>
+          )}
         </div>
         
         <div className="flex items-center gap-4">
+          <button
+            onClick={handleShare}
+            className="text-sm text-slate-400 hover:text-white transition-colors mr-2"
+          >
+            {isPrivateSession ? 'Copy Invite Link' : 'Start Private Session'}
+          </button>
+
           <select 
             value={language}
             onChange={(e) => setLanguage(e.target.value as 'javascript' | 'typescript')}

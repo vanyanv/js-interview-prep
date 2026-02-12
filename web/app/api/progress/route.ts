@@ -2,74 +2,59 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-const PROGRESS_FILE = path.join(process.cwd(), '..', 'user_progress.json');
+// In-memory storage for Vercel/Serverless environment (temporary until Database phase)
+// Note: This will reset when the serverless function cold starts or redeploys.
+let memoryProgress: Record<string, any> = {};
+
+// Helper to get progress safely
+function getProgress() {
+  // Try to load from file if existing (local dev), otherwise use memory
+  try {
+    const progressFile = path.join(process.cwd(), '..', 'user_progress.json'); // Adjust path if needed
+    if (fs.existsSync(progressFile)) {
+       const data = fs.readFileSync(progressFile, 'utf-8');
+       return { ...memoryProgress, ...JSON.parse(data) };
+    }
+  } catch (e) {
+    // Ignore file errors in Vercel
+  }
+  return memoryProgress;
+}
 
 export async function GET() {
-  try {
-    // Sync with solutions directory
-    const solutionsDir = path.join(process.cwd(), '..', 'solutions');
-    const problemsDir = path.join(process.cwd(), '..', 'problems');
-    
-    let currentProgress: Record<string, string> = {};
-    if (fs.existsSync(PROGRESS_FILE)) {
-      const data = fs.readFileSync(PROGRESS_FILE, 'utf-8');
-      currentProgress = JSON.parse(data);
-    }
-
-    if (fs.existsSync(solutionsDir) && fs.existsSync(problemsDir)) {
-      const solutionFiles = fs.readdirSync(solutionsDir);
-      const categories = fs.readdirSync(problemsDir).filter(f => fs.statSync(path.join(problemsDir, f)).isDirectory());
-
-      categories.forEach(category => {
-        const categoryPath = path.join(problemsDir, category);
-        const problemFiles = fs.readdirSync(categoryPath).filter(f => f.endsWith('.js'));
-
-        problemFiles.forEach(problemFile => {
-          const problemSlug = problemFile.replace('.js', '');
-          // Check if solution exists (js or ts)
-          const hasSolution = solutionFiles.some(s => 
-            s === `${problemSlug}.js` || s === `${problemSlug}.ts`
-          );
-
-          if (hasSolution) {
-            const progressKey = `${category}/${problemSlug}`;
-            if (!currentProgress[progressKey]) {
-              currentProgress[progressKey] = 'completed';
-            }
-          }
-        });
-      });
-      
-      // Save the synced progress
-      fs.writeFileSync(PROGRESS_FILE, JSON.stringify(currentProgress, null, 2));
-    }
-
-    return NextResponse.json(currentProgress);
-  } catch (error) {
-    return NextResponse.json({ error: 'Failed to read progress' }, { status: 500 });
-  }
+  const currentProgress = getProgress();
+  return NextResponse.json(currentProgress);
 }
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { problemId, status } = body; // problemId e.g., "01-two-pointers/pair-with-targetsum"
+    const { problemId, status } = body; 
 
-    let currentProgress = {};
-    if (fs.existsSync(PROGRESS_FILE)) {
-      const data = fs.readFileSync(PROGRESS_FILE, 'utf-8');
-      currentProgress = JSON.parse(data);
+    // Update memory
+    memoryProgress[problemId] = status;
+
+    // Try to save to file (works in local dev, ignored in Vercel)
+    const progressFile = path.join(process.cwd(), '..', 'user_progress.json');
+    try {
+        // Only write if we can resolve the file path relative to CWD in a way that makes sense
+        // In Vercel, this might throw or simply be readonly.
+        if (fs.existsSync(path.dirname(progressFile))) {
+             let fileData = {};
+             if (fs.existsSync(progressFile)) {
+                 fileData = JSON.parse(fs.readFileSync(progressFile, 'utf-8'));
+             }
+             const newData = { ...fileData, ...memoryProgress };
+             fs.writeFileSync(progressFile, JSON.stringify(newData, null, 2));
+        }
+    } catch (e) {
+        // Silently fail on file write in production
+        console.warn('Could not persist progress to file (expected in Vercel):', e);
     }
 
-    const updatedProgress = {
-      ...currentProgress,
-      [problemId]: status // "completed", "review", etc.
-    };
-
-    fs.writeFileSync(PROGRESS_FILE, JSON.stringify(updatedProgress, null, 2));
-
-    return NextResponse.json({ success: true, progress: updatedProgress });
+    return NextResponse.json({ success: true, progress: memoryProgress });
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to save progress' }, { status: 500 });
+    console.error('Progress API Error:', error);
+    return NextResponse.json({ error: 'Failed to update progress' }, { status: 500 });
   }
 }
