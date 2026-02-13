@@ -47,6 +47,15 @@ function CollaborativeEditor({ code, onChange, language }: CodeEditorProps) {
           yText.insert(0, code);
       }
 
+      // Set user awareness (cursor color and name)
+      const userColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+      const userName = `User ${Math.floor(Math.random() * 100)}`;
+      
+      provider.awareness.setLocalStateField('user', {
+        name: userName,
+        color: userColor
+      });
+
       const binding = new MonacoBinding(
         yText,
         editor.getModel()!,

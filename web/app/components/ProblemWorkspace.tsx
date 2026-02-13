@@ -10,6 +10,7 @@ import CodeEditor from './CodeEditor';
 import ConsoleOutput from './ConsoleOutput';
 import ProblemDescription from './ProblemDescription';
 import { CollaborationProvider } from './CollaborationProvider';
+import NetworkStatus from './NetworkStatus';
 
 interface ProblemWorkspaceProps {
   params: {
@@ -162,6 +163,9 @@ export default function ProblemWorkspace({ params, roomSessionId }: ProblemWorks
                 Private Session
              </span>
           )}
+          <div className="ml-2">
+            <NetworkStatus />
+          </div>
         </div>
         
         <div className="flex items-center gap-4">
