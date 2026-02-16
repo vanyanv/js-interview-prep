@@ -1,295 +1,410 @@
-# 30-Day JavaScript Interview Prep Plan
+# 30-Day Comprehensive Interview Prep Plan
 
-## Goal: Build Strong Foundation & Pattern Recognition
+## Goal: Interview-Ready Across All Major Patterns
 
-### 📊 Overview
+### Overview
 
-- **Target:** Foundation phase (33 problems from our 206-problem system)
-- **Focus:** Warmup + Two Pointers mastery
-- **Time:** 1-2 hours daily
-- **Outcome:** Strong foundation + pattern recognition
-- **Next Step:** Continue with Core Patterns phase (Sliding Window + Hash Maps)
+- **Target:** ~105 problems across all 8 algorithmic patterns + practical topics
+- **Focus:** Full pattern coverage — not just two pointers
+- **Time:** 1.5-2 hours daily
+- **Outcome:** Confident with all core patterns, ready for real coding interviews
+- **Starting Point:** 17 problems already completed (warmup + two-pointer basics)
+
+### Daily Structure (1.5-2 hours)
+
+- **Review:** Revisit yesterday's toughest problem (10 min)
+- **Study:** Read pattern guide on intro days (20 min)
+- **Practice:** Solve 3-4 problems using UMPIRE method (60-80 min)
+- **Reflect:** Note patterns and edge cases (5 min)
 
 ---
 
-## Week 1: Foundation Building (Days 1-7)
+## Week 1: Two Pointers Completion + Hash Maps + Sliding Window (Days 1-7)
 
 ### Goals
 
-- Master JavaScript fundamentals
-- Get comfortable with problem-solving process
-- Build confidence with easy wins
-
-### Daily Structure (1 hour)
-
-- **Warmup:** Review yesterday's problem (10 min)
-- **Learn:** Study new concept (20 min)
-- **Practice:** Solve 2 problems (30 min)
+- Close out remaining two-pointer problems
+- Master hash map pattern (the most common interview pattern)
+- Begin sliding window fundamentals
 
 ### Day-by-Day Plan
 
-**Day 1: Array Fundamentals**
+**Day 1: Finish Two Pointers Easy + Start Medium**
 
-- Study: `FUNDAMENTALS_FIRST.md` - Arrays section
-- Problems: `easy-04-find-maximum`, `easy-06-sum-array`
-- Pattern: Basic array traversal
+- Pattern: Two Pointers
+- Problems:
+  - `easy-04-long-pressed-name` (01-two-pointers)
+  - `easy-11-squares-sorted-array` (01-two-pointers)
+  - `medium-09-sort-colors` (01-two-pointers) — Dutch National Flag algorithm
 
-**Day 2: String & Array Practice**
+**Day 2: Two Pointers Classic Mediums**
 
-- Study: `FUNDAMENTALS_FIRST.md` - Strings section
-- Problems: `easy-02-count-vowels`, `easy-05-reverse-array`
-- Pattern: String manipulation + in-place operations
+- Pattern: Two Pointers — fix one element + scan remainder
+- Problems:
+  - `medium-11-three-sum` (01-two-pointers) — top interview question
+  - `medium-10-three-sum-closest` (01-two-pointers)
+  - `medium-03-container-most-water` (01-two-pointers)
 
 **Day 3: Hash Maps Introduction**
 
-- Study: `FUNDAMENTALS_FIRST.md` - Objects section
-- Problems: `easy-01-count-occurrences`, `easy-03-find-duplicates-basic`
-- Pattern: Frequency counting + O(1) lookups
+- Study: Read `patterns/hash-maps.md`
+- Pattern: Hash Maps — frequency counting, O(1) lookups
+- Problems:
+  - `easy-15-two-sum` (03-hash-maps) — #1 most asked interview question
+  - `easy-01-contains-duplicate` (03-hash-maps)
+  - `easy-17-valid-anagram` (03-hash-maps)
+  - `easy-04-first-unique-character` (03-hash-maps)
 
-**Day 4: Two Pointers Introduction**
+**Day 4: Hash Maps Frequency Patterns**
 
-- Study: `patterns/two-pointers.md`
-- Problems: `easy-09-reverse-string`, `easy-02-is-palindrome`
-- Pattern: Opposite direction pointers
+- Pattern: Hash Maps — pattern matching, character mapping
+- Problems:
+  - `easy-12-ransom-note` (03-hash-maps)
+  - `easy-07-isomorphic-strings` (03-hash-maps)
+  - `easy-18-word-pattern` (03-hash-maps)
+  - `easy-14-single-number` (03-hash-maps)
 
-**Day 5: Two Pointers - Same Direction**
+**Day 5: Hash Maps Easy to Medium**
 
-- Review: Fast/slow pointer concept
-- Problems: `medium-12-two-sum-sorted`, `easy-08-remove-element`
-- Pattern: Same direction + sorted array optimization
+- Pattern: Hash Maps — grouping, mathematical lookups
+- Problems:
+  - `easy-09-majority-element` (03-hash-maps)
+  - `easy-05-happy-number` (03-hash-maps)
+  - `easy-06-intersection-arrays` (03-hash-maps)
+  - `medium-04-group-anagrams` (03-hash-maps) — classic interview question
 
-**Day 6: Two Pointers - Array Manipulation**
+**Day 6: Sliding Window Introduction**
 
-- Review: In-place modifications
-- Problems: `easy-07-remove-duplicates`, `easy-06-move-zeros`
-- Pattern: Fast/slow pointers for array cleanup
+- Study: Read `patterns/sliding-window.md`
+- Pattern: Sliding Window — fixed-size window basics
+- Problems:
+  - `easy-04-max-sum-subarray-k` (02-sliding-window)
+  - `easy-01-average-subarrays-k` (02-sliding-window)
+  - `easy-02-contains-duplicate-ii` (02-sliding-window)
 
-**Day 7: Week 1 Review**
+**Day 7: Review Day**
 
-- Review: All warmup problems completed (6/6)
-- Practice: Re-solve any challenging problems
-- Assessment: Ready for two-pointers deep dive
+- Problems (lighter load):
+  - `easy-03-diet-plan-performance` (02-sliding-window)
+  - `easy-10-missing-number` (03-hash-maps)
+- Activity: Re-solve any problem from Days 3-6 that felt shaky
+- Review: Hash maps and sliding window pattern guides
+
+**Week 1 Total: ~23 problems**
 
 ---
 
-## Week 2: Two Pointers Deep Dive (Days 8-14)
+## Week 2: Sliding Window Medium + Stack + Binary Search + Fast/Slow (Days 8-14)
 
 ### Goals
 
-- Master two pointers pattern completely
-- Handle all variations (opposite, same direction, fixed + two)
-- Build speed and confidence
+- Master variable-size sliding window
+- Learn stack pattern (parentheses, monotonic stack)
+- Begin binary search and fast/slow pointer patterns
 
-**Day 8: Advanced Two Pointers** 
+### Day-by-Day Plan
 
-- Study: Complex two-pointer scenarios
-- Problems: `easy-05-merge-sorted-arrays`, `easy-03-is-subsequence`
-- Pattern: Merging and subsequence checking
+**Day 8: Sliding Window Medium**
 
-**Day 9: Two Pointers - Palindromes** [X]
+- Pattern: Sliding Window — variable-size with hash map tracking
+- Problems:
+  - `medium-08-longest-substring-no-repeat` (02-sliding-window) — top interview question
+  - `medium-02-find-all-anagrams` (02-sliding-window)
+  - `medium-14-permutation-in-string` (02-sliding-window)
 
-- Focus: Palindrome variations
-- Problems: `easy-12-valid-palindrome-ii`, `easy-10-reverse-vowels`
-- Pattern: Character-specific operations
+**Day 9: Sliding Window Medium Continued**
 
-**Day 10: Two Pointers - Sorting**
+- Pattern: Sliding Window — shrink/expand window
+- Problems:
+  - `medium-01-character-replacement` (02-sliding-window)
+  - `medium-11-max-consecutive-ones-iii` (02-sliding-window)
+  - `medium-13-minimum-size-subarray-sum` (02-sliding-window)
 
-- Focus: In-place sorting and partitioning
-- Problems: `medium-09-sort-colors`, `easy-11-squares-sorted-array`
-- Pattern: Dutch flag algorithm + merge techniques
+**Day 10: Stack Introduction**
 
-**Day 11: Fixed + Two Pointers**
+- Study: Read `patterns/stack.md`
+- Pattern: Stack — matching, validation
+- Problems:
+  - `easy-09-valid-parentheses` (05-stack) — classic interview question
+  - `easy-07-remove-adjacent-duplicates` (05-stack)
+  - `easy-02-baseball-game` (05-stack)
 
-- Study: 3Sum and 4Sum patterns
-- Problems: `medium-10-three-sum-closest`, `medium-04-four-sum`
-- Pattern: Fix element + two pointers on remainder
+**Day 11: Stack Easy to Medium**
 
-**Day 12: Two Pointers - Optimization**
+- Pattern: Stack — monotonic stack, design
+- Problems:
+  - `easy-05-next-greater-element-i` (05-stack)
+  - `easy-06-queue-using-stacks` (05-stack)
+  - `medium-05-min-stack` (05-stack) — design question
 
-- Focus: Greedy + two pointers
-- Problems: `medium-03-container-most-water`, `hard-03-trapping-rain-water`
-- Pattern: Area/volume optimization
+**Day 12: Stack Medium Classics**
 
-**Day 13: Advanced Two Pointers**
+- Pattern: Stack — monotonic stack, nested structures
+- Problems:
+  - `medium-02-daily-temperatures` (05-stack) — classic monotonic stack
+  - `medium-03-decode-string` (05-stack)
+  - `medium-04-evaluate-reverse-polish` (05-stack)
 
-- Challenge: Complex scenarios
-- Problems: `medium-01-boats-to-save-people`, `easy-01-backspace-string-compare`
-- Pattern: Simulation + validation
+**Day 13: Binary Search Introduction**
 
-**Day 14: Two Pointers Mastery**
+- Study: Read `patterns/binary-search.md`
+- Pattern: Binary Search — template patterns
+- Problems:
+  - `easy-01-binary-search` (06-binary-search)
+  - `easy-04-search-insert-position` (06-binary-search)
+  - `easy-02-first-bad-version` (06-binary-search)
 
-- Review: All two-pointer variations mastered
-- Practice: Solve 2-3 random two-pointer problems quickly
-- Assessment: Ready for next patterns (Sliding Window + Hash Maps)
+**Day 14: Fast/Slow Pointers Introduction + Week Review**
+
+- Study: Read `patterns/fast-slow-pointers.md`
+- Pattern: Fast/Slow Pointers — cycle detection, midpoint finding
+- Problems:
+  - `easy-03-linked-list-cycle` (04-fast-slow-pointers)
+  - `easy-04-middle-linked-list` (04-fast-slow-pointers)
+- Activity: Review stack and binary search patterns
+
+**Week 2 Total: ~20 problems**
 
 ---
 
-## Week 3: Two Pointers Advanced (Days 15-21)
+## Week 3: Recursion + Dynamic Programming (Days 15-21)
 
 ### Goals
 
-- Complete remaining two-pointer problems
-- Build speed and accuracy
-- Master all variations
+- Bridge fast/slow pointers and binary search medium problems
+- Build recursive thinking for trees
+- Master fundamental dynamic programming patterns
 
-**Day 15: String Processing**
+### Day-by-Day Plan
 
-- Focus: String-specific two pointers
-- Problems: `easy-04-long-pressed-name`, `medium-07-partition-labels`
-- Pattern: Character timing and partitioning
+**Day 15: Fast/Slow Pointers + Binary Search Medium**
 
-**Day 16: Interval Problems**
+- Pattern: Mixed — Floyd's cycle detection, rotated array search
+- Problems:
+  - `easy-05-palindrome-linked-list` (04-fast-slow-pointers)
+  - `medium-02-find-duplicate-number` (04-fast-slow-pointers) — Floyd's algorithm
+  - `medium-03-find-minimum-rotated-sorted` (06-binary-search)
 
-- Focus: Interval processing
-- Problems: `medium-05-interval-list-intersections`, `hard-01-minimum-window-substring`
-- Pattern: Interval merging and window optimization
+**Day 16: Binary Search on Answer Space + Recursion Intro**
 
-**Day 17: Advanced String Patterns**
+- Study: Read `patterns/recursion.md`
+- Pattern: Binary Search on answer space, basic recursion
+- Problems:
+  - `medium-08-search-rotated-sorted-array` (06-binary-search)
+  - `medium-05-koko-eating-bananas` (06-binary-search) — binary search on answer
+  - `easy-04-factorial` (07-recursion)
 
-- Challenge: Complex string algorithms
-- Problems: `hard-02-substring-concatenation`, `medium-02-compare-version-numbers`
-- Pattern: Multi-pattern string processing
+**Day 17: Recursion Fundamentals**
 
-**Day 18: Mathematical Two Pointers**
+- Pattern: Recursion — base cases, recursive decomposition
+- Problems:
+  - `easy-05-fibonacci` (07-recursion)
+  - `easy-10-reverse-string-recursive` (07-recursion)
+  - `easy-09-power-of-two` (07-recursion)
+  - `easy-06-maximum-depth-binary-tree` (07-recursion)
 
-- Focus: Permutations and mathematical problems
-- Problems: `medium-06-next-permutation`, `medium-08-shortest-unsorted-subarray`
-- Pattern: Mathematical transformations
+**Day 18: Tree Recursion + DP Introduction**
 
-**Day 19: Two Pointers Review**
+- Study: Read `patterns/dynamic-programming.md`
+- Pattern: Tree recursion leading into DP thinking
+- Problems:
+  - `easy-11-same-tree` (07-recursion)
+  - `easy-13-symmetric-tree` (07-recursion)
+  - `easy-02-climbing-stairs` (08-dynamic-programming)
 
-- Practice: Solve 3 random two-pointer problems
-- Time goal: 15-20 minutes each
-- Focus: Speed and accuracy
+**Day 19: Dynamic Programming Easy**
 
-**Day 20: Pattern Integration**
+- Pattern: DP — 1D fundamentals, state transitions
+- Problems:
+  - `easy-01-best-time-buy-sell-stock` (08-dynamic-programming) — must-know
+  - `easy-03-fibonacci-dp` (08-dynamic-programming)
+  - `easy-04-min-cost-climbing-stairs` (08-dynamic-programming)
 
-- Mixed review: 2 problems from warmup + two pointers
-- Focus: Quick pattern identification
-- Practice explaining solutions out loud
+**Day 20: Dynamic Programming Medium Classics**
 
-**Day 21: Assessment & Planning**
+- Pattern: DP — classic interview DP problems
+- Problems:
+  - `medium-05-house-robber` (08-dynamic-programming) — classic
+  - `medium-08-maximum-subarray` (08-dynamic-programming) — Kadane's algorithm
+  - `medium-01-coin-change` (08-dynamic-programming) — classic
 
-- Complete: All warmup (6) + two pointers (27) = 33 problems
-- Assessment: Two-pointer pattern mastery achieved
-- Plan: Ready for Phase 2 (Sliding Window + Hash Maps)
+**Day 21: Review Day**
+
+- Problems (lighter load):
+  - `medium-13-unique-paths` (08-dynamic-programming)
+  - `medium-07-longest-increasing-subsequence` (08-dynamic-programming)
+- Activity: Review all 8 pattern guides, identify weakest pattern, re-solve 1-2 problems from it
+
+**Week 3 Total: ~21 problems**
 
 ---
 
-## Week 4: Consolidation & Next Steps (Days 22-30)
+## Week 4: Mixed Practice + Practical Topics + Mock Interviews (Days 22-30)
 
 ### Goals
 
-- Solidify foundation phase mastery
-- Build speed and confidence
-- Prepare for Phase 2
+- Strengthen hash map medium problems
+- Practice pattern recognition with mixed problems
+- Add practical interview topics (React, system design)
+- Simulate real interview conditions
 
-**Day 22-24: Speed Building**
+### Day-by-Day Plan
 
-- Timed practice: 15 minutes per problem
-- Re-solve favorite problems from warmup + two pointers
-- Focus: Speed without sacrificing accuracy
+**Day 22: Hash Maps Medium Catchup**
 
-**Day 25-27: Mock Interview Practice**
+- Pattern: Hash Maps — high-frequency interview mediums
+- Problems:
+  - `medium-11-top-k-frequent` (03-hash-maps)
+  - `medium-09-subarray-sum-k` (03-hash-maps)
+  - `medium-06-longest-consecutive` (03-hash-maps)
 
-- Practice explaining solutions out loud
-- Solve 2 problems daily while verbalizing approach
-- Focus: Communication + coding under observation
+**Day 23: Mixed Practice Easy**
 
-**Day 28-29: Foundation Phase Review**
+- Pattern: Cross-pattern recognition
+- Problems:
+  - `easy-04-roman-to-integer` (09-mixed-practice)
+  - `easy-05-longest-common-prefix` (09-mixed-practice)
+  - `easy-10-invert-binary-tree` (09-mixed-practice)
+  - `easy-13-string-compression` (09-mixed-practice)
 
-- Complete review of all 33 problems solved
-- Identify any weak areas for additional practice
-- Update `PATTERN_MASTERY_TRACKER.md` progress
+**Day 24: Mixed Practice Medium — Top Interview Questions**
 
-**Day 30: Graduation & Next Phase Planning**
+- Pattern: Mixed — these appear in nearly every interview loop
+- Problems:
+  - `medium-01-product-except-self` (09-mixed-practice)
+  - `medium-08-merge-intervals` (09-mixed-practice)
+  - `medium-07-number-of-islands` (09-mixed-practice)
 
-- **Achievement Unlocked:** Foundation Phase Complete! 🎉
-- **Problems Mastered:** 33/206 (16% complete)
-- **Patterns Mastered:** Warmup fundamentals + Two Pointers
-- **Next Phase:** Core Patterns (Sliding Window + Hash Maps - 55 problems)
-- **Estimated Timeline:** 4-5 weeks for Phase 2
+**Day 25: Advanced Two Pointers + DP**
 
-### 🎯 Foundation Phase Completion Checklist
+- Pattern: Revisiting earlier patterns at higher difficulty
+- Problems:
+  - `medium-01-boats-to-save-people` (01-two-pointers)
+  - `medium-07-partition-labels` (01-two-pointers)
+  - `medium-03-decode-ways` (08-dynamic-programming)
 
-- [ ] All 6 warmup problems completed
-- [ ] All 27 two-pointer problems completed
-- [ ] Can solve easy problems in 10-15 minutes
-- [ ] Can identify two-pointer pattern within 2 minutes
-- [ ] Comfortable explaining solutions out loud
-- [ ] Ready for more complex patterns
+**Day 26: React Interview Practice**
 
----
+- Focus: React hooks — common live-coding and take-home questions
+- Problems:
+  - `easy-01-use-counter-hook` (react-interview-practice/easy)
+  - `easy-02-use-toggle-hook` (react-interview-practice/easy)
+  - `easy-03-use-local-storage` (react-interview-practice/easy)
 
-## 📈 Progress Tracking
+**Day 27: React + System Design**
 
-### Week 1 Checklist: Foundation Building
+- Focus: Practical frontend interview problems
+- Problems:
+  - `medium-01-use-debounce-hook` (react-interview-practice/medium)
+  - `medium-02-use-fetch-hook` (react-interview-practice/medium)
+  - `easy-01-cache-implementation` (system-design-practice/easy)
 
-- [ ] Completed all 6 warmup problems
-- [ ] Comfortable with JavaScript fundamentals
-- [ ] Understand basic two pointers concept
-- [ ] Can solve simple problems in 20-30 minutes
+**Day 28: Mock Interview Day 1**
 
-### Week 2 Checklist: Two Pointers Deep Dive
+- Format: 25 minutes per problem, timed strictly, explain approach out loud
+- Problems:
+  - `medium-04-rotate-image` (09-mixed-practice)
+  - `medium-06-course-schedule` (09-mixed-practice)
+  - `medium-07-search-2d-matrix` (06-binary-search)
 
-- [ ] Completed 10+ two-pointer problems
-- [ ] Can identify opposite vs same direction patterns
-- [ ] Understand when to use two pointers
-- [ ] Solving basic two-pointer problems in 15-20 minutes
+**Day 29: Mock Interview Day 2 + Hard Problem**
 
-### Week 3 Checklist: Two Pointers Mastery
+- Format: Simulate a full 45-minute interview — explain, code, test, analyze complexity
+- Problems:
+  - `hard-03-trapping-rain-water` (01-two-pointers) — classic hard
+  - `medium-06-longest-common-subsequence` (08-dynamic-programming)
 
-- [ ] Completed all 27 two-pointer problems
-- [ ] Can handle complex variations (3Sum, intervals, etc.)
-- [ ] Identify two-pointer patterns within 2 minutes
-- [ ] Solve most two-pointer problems in 10-15 minutes
+**Day 30: Final Review + Practical**
 
-### Week 4 Checklist: Foundation Mastery
+- Problems:
+  - `easy-01-memoization` (performance-optimization/easy)
+  - `medium-01-rate-limiter` (system-design-practice/medium)
+- Activity: Review all 8 pattern guides, build a personal cheat sheet of when to use each pattern
 
-- [ ] All 33 foundation problems completed
-- [ ] Can solve problems under time pressure
-- [ ] Comfortable explaining solutions out loud
-- [ ] Ready for Phase 2 (Core Patterns)
-
-### 🏆 30-Day Achievement: Foundation Expert
-
-- **Total Progress:** 33/206 problems (16%)
-- **Pattern Mastery:** Two Pointers Expert level
-- **Skills Gained:** Problem-solving fundamentals + core pattern
-- **Interview Readiness:** Ready for easy two-pointer questions
-
----
-
-## 💡 Success Tips
-
-1. **Don't Skip Warmups:** They build muscle memory
-2. **Use the UMPIRE Method:** Every single problem
-3. **Talk Out Loud:** Practice explaining your thinking
-4. **Review Mistakes:** Understand why wrong approaches failed
-5. **Celebrate Wins:** Acknowledge every solved problem
+**Week 4 Total: ~24 problems**
 
 ---
 
-## 🎯 What's Next?
+## Pattern Coverage Summary
 
-After 30 days, you should feel confident with:
+| Pattern | Problems | Key Must-Know Problems |
+|---------|----------|----------------------|
+| Two Pointers | 19 total (11 done + 8 new) | three-sum, container-most-water, trapping-rain-water |
+| Hash Maps | 15 | two-sum, group-anagrams, top-k-frequent, longest-consecutive |
+| Sliding Window | 10 | longest-substring-no-repeat, character-replacement, find-all-anagrams |
+| Stack | 9 | valid-parentheses, daily-temperatures, decode-string, min-stack |
+| Binary Search | 8 | search-rotated-sorted, koko-eating-bananas, find-minimum-rotated |
+| Fast/Slow Pointers | 4 | linked-list-cycle, find-duplicate-number, palindrome-linked-list |
+| Recursion | 8 | maximum-depth-binary-tree, symmetric-tree, same-tree |
+| Dynamic Programming | 12 | buy-sell-stock, house-robber, coin-change, maximum-subarray, LIS |
+| Mixed Practice | 8 | product-except-self, merge-intervals, number-of-islands |
+| React / System Design | 8 | hooks, debounce, fetch, cache, rate-limiter |
+| **Total** | **~105** | |
 
-- JavaScript fundamentals (arrays, strings, objects)
-- Two pointers pattern (all 25 variations mastered)
-- Problem-solving methodology (UMPIRE method)
-- Interview communication skills
+---
 
-**Ready for:** Easy two-pointer problems in real interviews
-**Next Step:** Phase 2 - Core Patterns (Sliding Window + Hash Maps - 55 problems)
-**Timeline:** 4-5 weeks to complete Phase 2
-**Final Goal:** 206 problems = Interview mastery in 12-16 weeks total
+## Progress Tracking
 
-### 📚 Recommended Next Steps
+### Week 1 Checklist
 
-1. **Take a 2-3 day break** to consolidate learning
-2. **Start Phase 2** with sliding window problems
-3. **Continue daily practice** (1-2 problems per day)
-4. **Use `PATTERN_MASTERY_TRACKER.md`** to track progress
-5. **Join Phase 2** when ready for more complex patterns
+- [ ] Remaining two-pointer easy + medium problems done
+- [ ] Hash maps pattern guide read
+- [ ] 12+ hash map problems completed
+- [ ] Sliding window pattern guide read
+- [ ] Fixed-size window problems completed
 
-**Congratulations on completing the Foundation Phase! 🎉**
+### Week 2 Checklist
+
+- [ ] Variable-size sliding window problems completed
+- [ ] Stack pattern guide read and 9 problems completed
+- [ ] Binary search pattern guide read and 3 easy problems done
+- [ ] Fast/slow pointers pattern guide read
+
+### Week 3 Checklist
+
+- [ ] Fast/slow + binary search medium problems done
+- [ ] Recursion pattern guide read and 6+ problems completed
+- [ ] DP pattern guide read
+- [ ] Can solve 1D DP problems (climbing stairs, house robber, coin change)
+- [ ] Understand Kadane's algorithm
+
+### Week 4 Checklist
+
+- [ ] Hash map mediums completed (top-k, subarray-sum-k, longest-consecutive)
+- [ ] Mixed practice: can identify correct pattern within 2 minutes
+- [ ] React hooks basics comfortable
+- [ ] Completed 2 mock interview sessions under timed conditions
+- [ ] Built personal pattern recognition cheat sheet
+
+### 30-Day Achievement
+
+- **Total Progress:** ~105/206 problems (51%)
+- **Patterns Covered:** All 8 algorithmic patterns
+- **Practical Skills:** React hooks, system design basics, performance optimization
+- **Interview Readiness:** Confident with easy problems, comfortable with most mediums
+
+---
+
+## What's Next After Day 30
+
+With all 8 patterns covered, continue deepening mastery:
+
+1. **Remaining hash map problems** — LRU cache, valid sudoku, brick wall
+2. **Sliding window hards** — sliding window maximum, minimum window substring
+3. **Stack hards** — basic calculator, largest rectangle in histogram
+4. **More DP** — edit distance, word break, longest common subsequence
+5. **Mixed practice hards** — median of two sorted arrays, n-queens, serialize/deserialize tree
+6. **React medium/hard** — compound components, infinite scroll, render props
+7. **System design medium** — rate limiting, circuit breaker, event sourcing
+
+---
+
+## Success Tips
+
+1. **Use the UMPIRE Method** on every single problem (Understand, Match, Plan, Implement, Review, Evaluate)
+2. **Talk Out Loud** — practice explaining your thinking as if in an interview
+3. **Don't Look at Solutions** for at least 20 minutes — struggle builds understanding
+4. **Review Mistakes** — understand why wrong approaches failed, not just the right answer
+5. **Pattern First** — before coding, identify which pattern applies and why
+6. **Time Yourself** — build speed gradually, especially in Week 4
+7. **Run `node test.js <problem-name>`** after every solution to verify correctness

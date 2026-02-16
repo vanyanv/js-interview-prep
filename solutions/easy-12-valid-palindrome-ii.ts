@@ -43,6 +43,48 @@ Pattern Notes:
 
 export const functionName = 'validPalindrome';
 
+const isItaPalindrome = (
+  string: string,
+  left: number,
+  right: number,
+): boolean => {
+  while (left < right) {
+    if (string[left] !== string[right]) return false;
+
+    left++;
+    right--;
+  }
+  return true;
+};
+
+export const validPalindrome = (string: string): boolean => {
+  let left = 0;
+  let right = string.length - 1;
+  let counter = 0;
+
+  while (left < right) {
+    if (string[right] !== string[left]) {
+      if (counter >= 1) return false;
+      counter++;
+
+      if (string[left] === string[right - 1]) {
+        right--;
+      } else if (string[left + 1] === string[right]) {
+        left++;
+      } else {
+        return false;
+      }
+      //we can pass into our helper left + 1 and right -1
+      // return (
+      //   isItaPalindrome(string, left + 1, right) ||
+      //   isItaPalindrome(string, left, right - 1)
+      // );
+    }
+    left++;
+    right--;
+  }
+  return true;
+};
 export const tests = [
   {
     input: ['aba'],
