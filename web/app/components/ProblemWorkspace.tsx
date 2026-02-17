@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Play, Save, ChevronLeft, CheckCircle, ArrowRight } from 'lucide-react';
+import { useState, useEffect, useCallback } from 'react';
+import { Play, ChevronLeft, CheckCircle, Users, Link2 } from 'lucide-react';
 import Link from 'next/link';
 import confetti from 'canvas-confetti';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,6 +11,8 @@ import ConsoleOutput from './ConsoleOutput';
 import ProblemDescription from './ProblemDescription';
 import { CollaborationProvider } from './CollaborationProvider';
 import NetworkStatus from './NetworkStatus';
+import CollaborationAvatars from './CollaborationAvatars';
+import { KeyboardShortcut } from './ui/KeyboardShortcut';
 
 interface ProblemWorkspaceProps {
   params: {
@@ -20,10 +22,26 @@ interface ProblemWorkspaceProps {
   roomSessionId?: string;
 }
 
+interface RunResult {
+  stdout?: string;
+  stderr?: string;
+  results?: Array<{
+    passed: boolean;
+    input: any;
+    expected: any;
+    actual: any;
+    error?: string;
+    duration: number;
+  }>;
+  totalTests?: number;
+  passedTests?: number;
+  passed?: boolean;
+}
+
 export default function ProblemWorkspace({ params, roomSessionId }: ProblemWorkspaceProps) {
   const [problem, setProblem] = useState<any>(null);
   const [code, setCode] = useState('');
-  const [output, setOutput] = useState<string | null>(null);
+  const [runResult, setRunResult] = useState<RunResult | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isRunning, setIsRunning] = useState(false);
   const [language, setLanguage] = useState<'javascript' | 'typescript'>('javascript');
@@ -46,101 +64,82 @@ export default function ProblemWorkspace({ params, roomSessionId }: ProblemWorks
     fetchProblem();
   }, [params.category, params.slug]);
 
-  // Update code when language changes, but only if we have the problem data
   useEffect(() => {
     if (problem) {
-      // Logic to switch code could be smarter (preserving content if compatible), 
-      // but simpler for now to reset to starter code if switching languages
-      // or we can keep separate state for each language.
       setCode(problem.starterCode[language]);
     }
   }, [language, problem]);
 
-  const handleRun = async () => {
+  const handleRun = useCallback(async () => {
+    if (isRunning || !problem) return;
     setIsRunning(true);
-    setOutput(null);
+    setRunResult(null);
     try {
       const res = await fetch('/api/run', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           code,
-          problemName: problem.slug, // using slug as filename base
+          problemName: problem.slug,
           category: problem.category,
           language
         }),
       });
-      
-      const result = await res.json();
-      
-      if (result.stdout) {
-        setOutput(result.stdout);
-        // Auto-mark as complete if tests passed
-        if (result.stdout.includes('All tests passed')) {
-          setShowSuccess(true);
-          confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 }
-          });
 
-          await fetch('/api/progress', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-              problemId: `${problem.category}/${problem.slug}`, 
-              status: 'completed' 
-            })
-          });
-        }
-      }
-      
-      if (result.stderr) {
-        // If there's stderr, append it
-        setOutput(prev => (prev ? `${prev}\n\nERROR:\n${result.stderr}` : `ERROR:\n${result.stderr}`));
-      }
+      const result: RunResult = await res.json();
+      setRunResult(result);
 
-      if (!result.stdout && !result.stderr) {
-         setOutput('No output returned.');
-      }
+      if (result.passed) {
+        setShowSuccess(true);
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
 
+        await fetch('/api/progress', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            problemId: `${problem.category}/${problem.slug}`,
+            status: 'completed'
+          })
+        });
+      }
     } catch (error) {
-      setOutput('Failed to execute code.');
+      setRunResult({ stderr: 'Failed to execute code.' });
     } finally {
       setIsRunning(false);
     }
-  };
+  }, [code, problem, language, isRunning]);
 
-  // Use provided session ID or default to global room for this problem
   const activeRoomId = roomSessionId || `${params.category}-${params.slug}`;
   const isPrivateSession = !!roomSessionId;
 
   const handleShare = () => {
-    // Generate a random session ID if not already in one
     if (!isPrivateSession) {
-        const newSessionId = Math.random().toString(36).substring(2, 10);
-        const url = new URL(window.location.href);
-        url.searchParams.set('room', newSessionId);
-        window.location.href = url.toString();
-        return;
+      const newSessionId = Math.random().toString(36).substring(2, 10);
+      const url = new URL(window.location.href);
+      url.searchParams.set('room', newSessionId);
+      window.location.href = url.toString();
+      return;
     }
-    
-    // If already in private session, copy URL
+
     navigator.clipboard.writeText(window.location.href);
     alert('Session URL copied to clipboard!');
   };
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-slate-950 text-white">
-        Loading problem...
+      <div className="flex items-center justify-center h-screen">
+        <div className="w-5 h-5 border-2 border-blue-500/30 border-t-blue-500 rounded-full animate-spin" />
       </div>
     );
   }
 
   if (!problem) {
     return (
-      <div className="flex items-center justify-center h-screen bg-slate-950 text-white">
+      <div className="flex items-center justify-center h-screen text-zinc-400">
         Problem not found.
       </div>
     );
@@ -148,133 +147,152 @@ export default function ProblemWorkspace({ params, roomSessionId }: ProblemWorks
 
   return (
     <CollaborationProvider roomId={activeRoomId}>
-    <div className="h-screen flex flex-col bg-slate-950 text-slate-200">
-      {/* Header */}
-      <header className="h-14 border-b border-slate-800 flex items-center justify-between px-6 bg-slate-900/50 backdrop-blur">
-        <div className="flex items-center gap-4">
-          <Link href="/" className="text-slate-400 hover:text-white transition-colors flex items-center gap-2">
-            <ChevronLeft size={18} />
-            Back
-          </Link>
-          <div className="h-4 w-px bg-slate-700 mx-2" />
-          <h1 className="font-semibold">{problem.slug}</h1>
-          {isPrivateSession && (
-             <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded border border-purple-500/30">
-                Private Session
-             </span>
-          )}
-          <div className="ml-2">
+      <div className="h-screen flex flex-col">
+        {/* Header */}
+        <header className="h-13 border-b border-white/[0.04] flex items-center justify-between px-5 bg-white/[0.02] backdrop-blur-xl flex-shrink-0">
+          <div className="flex items-center gap-3">
+            <Link href="/" className="text-zinc-500 hover:text-white transition-colors flex items-center gap-1.5">
+              <ChevronLeft size={16} />
+              <span className="text-xs font-medium">Back</span>
+            </Link>
+            <div className="h-4 w-px bg-white/[0.06]" />
+            <h1 className="text-sm font-semibold text-zinc-200">
+              {problem.slug}
+            </h1>
+            {isPrivateSession && (
+              <span className="text-[10px] bg-purple-500/15 text-purple-300 px-2 py-0.5 rounded-md border border-purple-500/20 font-medium">
+                Private
+              </span>
+            )}
             <NetworkStatus />
           </div>
-        </div>
-        
-        <div className="flex items-center gap-4">
-          <button
-            onClick={handleShare}
-            className="text-sm text-slate-400 hover:text-white transition-colors mr-2"
-          >
-            {isPrivateSession ? 'Copy Invite Link' : 'Start Private Session'}
-          </button>
 
-          <select 
-            value={language}
-            onChange={(e) => setLanguage(e.target.value as 'javascript' | 'typescript')}
-            className="bg-slate-800 border-none rounded px-3 py-1.5 text-sm focus:ring-1 focus:ring-blue-500 cursor-pointer"
-          >
-            <option value="javascript">JavaScript</option>
-            <option value="typescript">TypeScript</option>
-          </select>
+          <div className="flex items-center gap-3">
+            {/* Collaboration Avatars */}
+            <CollaborationAvatars />
 
-          <button
-            onClick={handleRun}
-            disabled={isRunning}
-            className={`flex items-center gap-2 px-4 py-1.5 rounded font-medium transition-all ${
-              isRunning 
-                ? 'bg-slate-700 text-slate-400 cursor-not-allowed' 
-                : 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-500/20'
-            }`}
-          >
-            <Play size={16} fill="currentColor" />
-            {isRunning ? 'Running...' : 'Run Code'}
-          </button>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <div className="flex-1 flex overflow-hidden p-4 gap-4">
-        {/* Left: Description */}
-        <div className="w-1/3 flex-shrink-0 h-full">
-          <ProblemDescription 
-            title={problem.slug} 
-            category={problem.category}
-            difficulty={problem.difficulty}
-            description={problem.description}
-          />
-        </div>
-
-        {/* Right: Editor & Console */}
-        <div className="flex-1 flex flex-col gap-4 h-full min-w-0">
-          <div className="flex-1 min-h-0">
-            <CodeEditor 
-              code={code} 
-              onChange={(val) => setCode(val || '')} 
-              language={language}
-            />
-          </div>
-          <div className="h-1/3 min-h-[200px] flex-shrink-0">
-            <ConsoleOutput 
-              output={output} 
-              error={null} // parsing not implemented separate yet
-              isLoading={isRunning}
-            />
-          </div>
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {showSuccess && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="bg-slate-900 border border-green-500/50 rounded-2xl p-8 max-w-md w-full shadow-2xl shadow-green-500/10 text-center"
+            <button
+              onClick={handleShare}
+              className="flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-300 transition-colors px-2.5 py-1.5 rounded-lg hover:bg-white/[0.04]"
             >
-              <div className="flex justify-center mb-6">
-                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center">
-                  <CheckCircle className="w-8 h-8 text-green-500" />
+              {isPrivateSession ? (
+                <>
+                  <Link2 size={12} />
+                  Copy Link
+                </>
+              ) : (
+                <>
+                  <Users size={12} />
+                  Collaborate
+                </>
+              )}
+            </button>
+
+            <div className="h-4 w-px bg-white/[0.06]" />
+
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value as 'javascript' | 'typescript')}
+              className="bg-white/[0.04] border border-white/[0.06] rounded-lg px-2.5 py-1.5 text-xs font-medium text-zinc-300 focus:outline-none focus:ring-1 focus:ring-blue-500/50 cursor-pointer"
+            >
+              <option value="javascript">JavaScript</option>
+              <option value="typescript">TypeScript</option>
+            </select>
+
+            <button
+              onClick={handleRun}
+              disabled={isRunning}
+              className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                isRunning
+                  ? 'bg-zinc-800 text-zinc-500 cursor-not-allowed'
+                  : 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30'
+              }`}
+            >
+              <Play size={12} fill="currentColor" />
+              {isRunning ? 'Running...' : 'Run'}
+              {!isRunning && (
+                <KeyboardShortcut keys={{ mac: ['\u2318', '\u23CE'], default: ['Ctrl', '\u23CE'] }} />
+              )}
+            </button>
+          </div>
+        </header>
+
+        {/* Main Content */}
+        <div className="flex-1 flex overflow-hidden p-3 gap-3">
+          {/* Left: Description */}
+          <div className="w-[340px] flex-shrink-0 h-full">
+            <ProblemDescription
+              title={problem.slug}
+              category={problem.category}
+              difficulty={problem.difficulty}
+              description={problem.description}
+            />
+          </div>
+
+          {/* Right: Editor & Console */}
+          <div className="flex-1 flex flex-col gap-3 h-full min-w-0">
+            <div className="flex-1 min-h-0">
+              <CodeEditor
+                code={code}
+                onChange={(val) => setCode(val || '')}
+                language={language}
+                onRun={handleRun}
+              />
+            </div>
+            <div className="h-[35%] min-h-[180px] flex-shrink-0">
+              <ConsoleOutput
+                result={runResult}
+                isLoading={isRunning}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Success Modal */}
+        <AnimatePresence>
+          {showSuccess && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0, y: 12 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 12 }}
+                className="rounded-2xl border border-green-500/20 bg-[#111113] p-8 max-w-sm w-full shadow-2xl shadow-green-500/5 text-center"
+              >
+                <div className="flex justify-center mb-6">
+                  <div className="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center">
+                    <CheckCircle className="w-7 h-7 text-green-400" />
+                  </div>
                 </div>
-              </div>
-              
-              <h2 className="text-3xl font-bold text-white mb-2">Great Job!</h2>
-              <p className="text-slate-400 mb-8">
-                You've successfully solved <span className="text-white font-medium">{problem.slug}</span>.
-              </p>
-              
-              <div className="flex flex-col gap-3">
-                <Link 
-                  href="/"
-                  className="w-full py-3 px-4 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-medium transition-all"
-                >
-                  Back to Dashboard
-                </Link>
-                <button 
-                  onClick={() => setShowSuccess(false)}
-                  className="w-full py-3 px-4 text-slate-400 hover:text-white transition-colors"
-                >
-                  Stay Here
-                </button>
-              </div>
+
+                <h2 className="text-2xl font-bold text-white mb-1.5">Nice work!</h2>
+                <p className="text-zinc-500 text-sm mb-8">
+                  You solved <span className="text-zinc-300 font-medium">{problem.slug}</span>
+                </p>
+
+                <div className="flex flex-col gap-2.5">
+                  <Link
+                    href="/"
+                    className="w-full py-2.5 px-4 bg-white/[0.06] hover:bg-white/[0.1] text-white rounded-xl text-sm font-medium transition-all border border-white/[0.06]"
+                  >
+                    Back to Dashboard
+                  </Link>
+                  <button
+                    onClick={() => setShowSuccess(false)}
+                    className="w-full py-2.5 px-4 text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+                  >
+                    Keep Practicing
+                  </button>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+          )}
+        </AnimatePresence>
+      </div>
     </CollaborationProvider>
   );
 }

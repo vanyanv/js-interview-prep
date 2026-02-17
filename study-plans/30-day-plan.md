@@ -45,21 +45,21 @@
   - `medium-10-three-sum-closest` (01-two-pointers)
   - `medium-03-container-most-water` (01-two-pointers)
 
-**Day 3: Hash Maps Introduction**
+**Day 3: Hash Maps Introduction** [x]
 
 - Study: Read `patterns/hash-maps.md`
 - Pattern: Hash Maps — frequency counting, O(1) lookups
 - Problems:
-  - `easy-15-two-sum` (03-hash-maps) — #1 most asked interview question
-  - `easy-01-contains-duplicate` (03-hash-maps)
-  - `easy-17-valid-anagram` (03-hash-maps)
-  - `easy-04-first-unique-character` (03-hash-maps)
+  - `easy-15-two-sum` (03-hash-maps) — #1 most asked interview question [x]
+  - `easy-01-contains-duplicate` (03-hash-maps) [x]
+  - `easy-17-valid-anagram` (03-hash-maps) [x]
+  - `easy-04-first-unique-character` (03-hash-maps) [x]
 
 **Day 4: Hash Maps Frequency Patterns**
 
 - Pattern: Hash Maps — pattern matching, character mapping
 - Problems:
-  - `easy-12-ransom-note` (03-hash-maps)
+  - `easy-12-ransom-note` (03-hash-maps) [x]
   - `easy-07-isomorphic-strings` (03-hash-maps)
   - `easy-18-word-pattern` (03-hash-maps)
   - `easy-14-single-number` (03-hash-maps)
@@ -327,19 +327,19 @@
 
 ## Pattern Coverage Summary
 
-| Pattern | Problems | Key Must-Know Problems |
-|---------|----------|----------------------|
-| Two Pointers | 19 total (11 done + 8 new) | three-sum, container-most-water, trapping-rain-water |
-| Hash Maps | 15 | two-sum, group-anagrams, top-k-frequent, longest-consecutive |
-| Sliding Window | 10 | longest-substring-no-repeat, character-replacement, find-all-anagrams |
-| Stack | 9 | valid-parentheses, daily-temperatures, decode-string, min-stack |
-| Binary Search | 8 | search-rotated-sorted, koko-eating-bananas, find-minimum-rotated |
-| Fast/Slow Pointers | 4 | linked-list-cycle, find-duplicate-number, palindrome-linked-list |
-| Recursion | 8 | maximum-depth-binary-tree, symmetric-tree, same-tree |
-| Dynamic Programming | 12 | buy-sell-stock, house-robber, coin-change, maximum-subarray, LIS |
-| Mixed Practice | 8 | product-except-self, merge-intervals, number-of-islands |
-| React / System Design | 8 | hooks, debounce, fetch, cache, rate-limiter |
-| **Total** | **~105** | |
+| Pattern               | Problems                   | Key Must-Know Problems                                                |
+| --------------------- | -------------------------- | --------------------------------------------------------------------- |
+| Two Pointers          | 19 total (11 done + 8 new) | three-sum, container-most-water, trapping-rain-water                  |
+| Hash Maps             | 15                         | two-sum, group-anagrams, top-k-frequent, longest-consecutive          |
+| Sliding Window        | 10                         | longest-substring-no-repeat, character-replacement, find-all-anagrams |
+| Stack                 | 9                          | valid-parentheses, daily-temperatures, decode-string, min-stack       |
+| Binary Search         | 8                          | search-rotated-sorted, koko-eating-bananas, find-minimum-rotated      |
+| Fast/Slow Pointers    | 4                          | linked-list-cycle, find-duplicate-number, palindrome-linked-list      |
+| Recursion             | 8                          | maximum-depth-binary-tree, symmetric-tree, same-tree                  |
+| Dynamic Programming   | 12                         | buy-sell-stock, house-robber, coin-change, maximum-subarray, LIS      |
+| Mixed Practice        | 8                          | product-except-self, merge-intervals, number-of-islands               |
+| React / System Design | 8                          | hooks, debounce, fetch, cache, rate-limiter                           |
+| **Total**             | **~105**                   |                                                                       |
 
 ---
 

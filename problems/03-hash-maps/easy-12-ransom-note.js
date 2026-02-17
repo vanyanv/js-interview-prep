@@ -74,6 +74,6 @@ export const tests = [
   },
   {
     input: ["aabbc", "aaabbc"],
-    expected: false
+    expected: true
   }
 ];

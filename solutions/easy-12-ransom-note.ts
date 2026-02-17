@@ -43,9 +43,41 @@ Hash Map Pattern Notes:
 
 export const functionName = 'canConstruct';
 
-export const canConstruct = (ransomNote: string, magazine: string) => {
+export const canConstruct = (ransomNote: string, magazine: string): boolean => {
+  //create a map of the letters in magazine
+  let hashMap = new Map<string, number>();
 
-  
+  for (let i = 0; i < magazine.length; i++) {
+    let current = magazine[i];
+    if (hashMap.has(current)) {
+      hashMap.set(current, hashMap.get(current)! + 1);
+    } else {
+      hashMap.set(current, 1);
+    }
+  }
+  //go thru ransom note
+
+  for (let j = 0; j < ransomNote.length; j++) {
+    let current = ransomNote[j];
+
+    if (hashMap.has(current)) {
+      hashMap.set(current, hashMap.get(current)! - 1);
+      if (hashMap.get(current) === 0) hashMap.delete(current);
+    } else {
+      return false;
+    }
+  }
+
+  //check if the character esists
+
+  //decrement from the hashmap
+  //if the count === 0 delete the character
+  //else
+  //return false
+
+  //return true
+
+  return true;
 };
 
 export const tests = [
@@ -79,6 +111,6 @@ export const tests = [
   },
   {
     input: ['aabbc', 'aaabbc'],
-    expected: false,
+    expected: true,
   },
 ];

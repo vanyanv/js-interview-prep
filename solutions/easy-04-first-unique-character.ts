@@ -41,6 +41,24 @@ Hash Map Pattern Notes:
 
 export const functionName = 'firstUniqChar';
 
+export const firstUniqChar = (s: string): number => {
+  const sMap = new Map<string, number>();
+
+  for (let i = 0; i < s.length; i++) {
+    if (sMap.has(s[i])) {
+      sMap.set(s[i], sMap.get(s[i])! + 1);
+    } else {
+      sMap.set(s[i], 1);
+    }
+  }
+
+  for (let j = 0; j <s.length; j++) {
+    if (sMap.get(s[j]) === 1) return j;
+  }
+
+  return -1;
+}
+
 export const tests = [
   {
     input: ["leetcode"],
