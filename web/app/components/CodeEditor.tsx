@@ -5,7 +5,7 @@ import Editor, { OnMount } from '@monaco-editor/react';
 import { useRoom } from '@liveblocks/react/suspense';
 import * as Y from 'yjs';
 import { LiveblocksYjsProvider } from '@liveblocks/yjs';
-import { MonacoBinding } from 'y-monaco';
+// y-monaco is imported dynamically below — it accesses `window` at module level
 
 interface CodeEditorProps {
   code: string;
@@ -164,31 +164,39 @@ function CollaborativeEditor({ code, onChange, language, onRun }: CodeEditorProp
   // Bind Yjs to Monaco
   useEffect(() => {
     if (provider && editor && doc) {
-      const yText = doc.getText('codemirror');
+      let binding: any;
+      let cancelled = false;
 
-      if (yText.toString() === '') {
-        yText.insert(0, code);
-      }
+      import('y-monaco').then(({ MonacoBinding }) => {
+        if (cancelled) return;
 
-      const userColor = getRandomItem(AWARENESS_COLORS);
-      const userName = getRandomItem(AWARENESS_NAMES);
+        const yText = doc.getText('codemirror');
 
-      provider.awareness.setLocalStateField('user', {
-        name: userName,
-        color: userColor,
+        if (yText.toString() === '') {
+          yText.insert(0, code);
+        }
+
+        const userColor = getRandomItem(AWARENESS_COLORS);
+        const userName = getRandomItem(AWARENESS_NAMES);
+
+        provider.awareness.setLocalStateField('user', {
+          name: userName,
+          color: userColor,
+        });
+
+        binding = new MonacoBinding(
+          yText,
+          editor.getModel()!,
+          new Set([editor]),
+          provider.awareness as any
+        );
+
+        setIsCollabReady(true);
       });
 
-      const binding = new MonacoBinding(
-        yText,
-        editor.getModel()!,
-        new Set([editor]),
-        provider.awareness as any
-      );
-
-      setIsCollabReady(true);
-
       return () => {
-        binding.destroy();
+        cancelled = true;
+        binding?.destroy();
         setIsCollabReady(false);
       };
     }

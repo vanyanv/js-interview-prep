@@ -13,6 +13,7 @@ import { CollaborationProvider } from './CollaborationProvider';
 import NetworkStatus from './NetworkStatus';
 import CollaborationAvatars from './CollaborationAvatars';
 import { KeyboardShortcut } from './ui/KeyboardShortcut';
+import { useCodeRunner } from '@/app/hooks/useCodeRunner';
 
 interface ProblemWorkspaceProps {
   params: {
@@ -22,30 +23,27 @@ interface ProblemWorkspaceProps {
   roomSessionId?: string;
 }
 
-interface RunResult {
-  stdout?: string;
-  stderr?: string;
-  results?: Array<{
-    passed: boolean;
-    input: any;
-    expected: any;
-    actual: any;
-    error?: string;
-    duration: number;
-  }>;
-  totalTests?: number;
-  passedTests?: number;
-  passed?: boolean;
+interface ProblemData {
+  slug: string;
+  category: string;
+  functionName: string;
+  description: string;
+  difficulty: string;
+  tests: Array<{ input: any[]; expected: any }>;
+  starterCode: {
+    javascript: string;
+    typescript: string;
+  };
 }
 
 export default function ProblemWorkspace({ params, roomSessionId }: ProblemWorkspaceProps) {
-  const [problem, setProblem] = useState<any>(null);
+  const [problem, setProblem] = useState<ProblemData | null>(null);
   const [code, setCode] = useState('');
-  const [runResult, setRunResult] = useState<RunResult | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [isRunning, setIsRunning] = useState(false);
   const [language, setLanguage] = useState<'javascript' | 'typescript'>('javascript');
   const [showSuccess, setShowSuccess] = useState(false);
+
+  const { result: runResult, isRunning, runCode, clearResult } = useCodeRunner();
 
   useEffect(() => {
     const fetchProblem = async () => {
@@ -72,46 +70,27 @@ export default function ProblemWorkspace({ params, roomSessionId }: ProblemWorks
 
   const handleRun = useCallback(async () => {
     if (isRunning || !problem) return;
-    setIsRunning(true);
-    setRunResult(null);
-    try {
-      const res = await fetch('/api/run', {
+
+    const result = await runCode(code, problem.tests, problem.functionName, language);
+
+    if (result.passed) {
+      setShowSuccess(true);
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+      await fetch('/api/progress', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          code,
-          problemName: problem.slug,
-          category: problem.category,
-          language
-        }),
+          problemId: `${problem.category}/${problem.slug}`,
+          status: 'completed'
+        })
       });
-
-      const result: RunResult = await res.json();
-      setRunResult(result);
-
-      if (result.passed) {
-        setShowSuccess(true);
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 }
-        });
-
-        await fetch('/api/progress', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            problemId: `${problem.category}/${problem.slug}`,
-            status: 'completed'
-          })
-        });
-      }
-    } catch (error) {
-      setRunResult({ stderr: 'Failed to execute code.' });
-    } finally {
-      setIsRunning(false);
     }
-  }, [code, problem, language, isRunning]);
+  }, [code, problem, language, isRunning, runCode]);
 
   const activeRoomId = roomSessionId || `${params.category}-${params.slug}`;
   const isPrivateSession = !!roomSessionId;
@@ -211,7 +190,7 @@ export default function ProblemWorkspace({ params, roomSessionId }: ProblemWorks
               <Play size={12} fill="currentColor" />
               {isRunning ? 'Running...' : 'Run'}
               {!isRunning && (
-                <KeyboardShortcut keys={{ mac: ['\u2318', '\u23CE'], default: ['Ctrl', '\u23CE'] }} />
+                <KeyboardShortcut keys={{ mac: ['⌘', '⏎'], default: ['Ctrl', '⏎'] }} />
               )}
             </button>
           </div>
@@ -243,6 +222,7 @@ export default function ProblemWorkspace({ params, roomSessionId }: ProblemWorks
               <ConsoleOutput
                 result={runResult}
                 isLoading={isRunning}
+                onClear={clearResult}
               />
             </div>
           </div>

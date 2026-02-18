@@ -2,38 +2,19 @@
 
 import React from 'react';
 import { useStatus } from '@liveblocks/react';
+import { useRoom } from '@liveblocks/react/suspense';
 import { Wifi, WifiOff, Loader2 } from 'lucide-react';
 
-class ErrorBoundary extends React.Component<
-  { fallback: React.ReactNode; children: React.ReactNode },
-  { hasError: boolean }
-> {
-  constructor(props: any) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-  render() {
-    if (this.state.hasError) return this.props.fallback;
-    return this.props.children;
-  }
-}
-
 export default function NetworkStatus() {
-  return (
-    <ErrorBoundary
-      fallback={
-        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-red-500/10 text-red-400 text-[10px] font-medium border border-red-500/15">
-          <WifiOff size={11} />
-          <span>Offline</span>
-        </div>
-      }
-    >
-      <RealStatus />
-    </ErrorBoundary>
-  );
+  // Check if Liveblocks context is available
+  try {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useRoom();
+    return <RealStatus />;
+  } catch {
+    // No RoomProvider in tree — collaboration disabled
+    return null;
+  }
 }
 
 function RealStatus() {

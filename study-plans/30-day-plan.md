@@ -60,16 +60,16 @@
 - Pattern: Hash Maps — pattern matching, character mapping
 - Problems:
   - `easy-12-ransom-note` (03-hash-maps) [x]
-  - `easy-07-isomorphic-strings` (03-hash-maps)
-  - `easy-18-word-pattern` (03-hash-maps)
-  - `easy-14-single-number` (03-hash-maps)
+  - `easy-07-isomorphic-strings` (03-hash-maps) [x]
+  - `easy-18-word-pattern` (03-hash-maps) [x]
+  - `easy-14-single-number` (03-hash-maps) [x]
 
 **Day 5: Hash Maps Easy to Medium**
 
 - Pattern: Hash Maps — grouping, mathematical lookups
 - Problems:
-  - `easy-09-majority-element` (03-hash-maps)
-  - `easy-05-happy-number` (03-hash-maps)
+  - `easy-09-majority-element` (03-hash-maps) [x]
+  - `easy-05-happy-number` (03-hash-maps) [x]
   - `easy-06-intersection-arrays` (03-hash-maps)
   - `medium-04-group-anagrams` (03-hash-maps) — classic interview question
 

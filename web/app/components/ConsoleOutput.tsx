@@ -1,36 +1,30 @@
 'use client';
 
-import { useState } from 'react';
-import { CheckCircle, XCircle, Clock, ChevronDown, ChevronRight, Terminal, List } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { CheckCircle, XCircle, Clock, ChevronDown, ChevronRight, Terminal, List, Trash2, AlertTriangle, Info, Timer } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/app/lib/cn';
-
-interface TestResult {
-  passed: boolean;
-  input: any;
-  expected: any;
-  actual: any;
-  error?: string;
-  duration: number;
-}
-
-interface RunResult {
-  stdout?: string;
-  stderr?: string;
-  results?: TestResult[];
-  totalTests?: number;
-  passedTests?: number;
-  passed?: boolean;
-}
+import ConsoleValue from './ConsoleValue';
+import type { ConsoleEntry, RunResult } from '@/app/hooks/useCodeRunner';
 
 interface ConsoleOutputProps {
   result: RunResult | null;
   isLoading: boolean;
+  onClear?: () => void;
 }
 
 type Tab = 'tests' | 'console';
 
-export default function ConsoleOutput({ result, isLoading }: ConsoleOutputProps) {
+const LEVEL_STYLES: Record<string, { bg: string; border: string; icon: React.ReactNode; text: string }> = {
+  log: { bg: '', border: '', icon: null, text: 'text-zinc-300' },
+  warn: { bg: 'bg-amber-500/[0.04]', border: 'border-l-2 border-l-amber-500/30', icon: <AlertTriangle size={10} className="text-amber-400 flex-shrink-0 mt-0.5" />, text: 'text-amber-200' },
+  error: { bg: 'bg-red-500/[0.04]', border: 'border-l-2 border-l-red-500/30', icon: <XCircle size={10} className="text-red-400 flex-shrink-0 mt-0.5" />, text: 'text-red-300' },
+  info: { bg: 'bg-blue-500/[0.04]', border: 'border-l-2 border-l-blue-500/30', icon: <Info size={10} className="text-blue-400 flex-shrink-0 mt-0.5" />, text: 'text-blue-300' },
+  debug: { bg: 'bg-zinc-500/[0.04]', border: 'border-l-2 border-l-zinc-500/30', icon: null, text: 'text-zinc-400' },
+  table: { bg: '', border: '', icon: null, text: 'text-zinc-300' },
+};
+
+export default function ConsoleOutput({ result, isLoading, onClear }: ConsoleOutputProps) {
   const [activeTab, setActiveTab] = useState<Tab>('tests');
   const [expandedTests, setExpandedTests] = useState<Set<number>>(new Set());
 
@@ -44,7 +38,24 @@ export default function ConsoleOutput({ result, isLoading }: ConsoleOutputProps)
   };
 
   const hasResults = result?.results && result.results.length > 0;
-  const hasConsoleOutput = result?.stdout || result?.stderr;
+  const hasConsoleOutput = result?.consoleEntries && result.consoleEntries.length > 0;
+  const hasError = !!result?.error;
+
+  // Auto-switch to relevant tab when results arrive
+  useEffect(() => {
+    if (!result) return;
+    if (hasResults || hasError) {
+      setActiveTab('tests');
+    } else if (hasConsoleOutput && !hasResults) {
+      setActiveTab('console');
+    }
+  }, [result, hasResults, hasConsoleOutput, hasError]);
+
+  const formatTime = (ms: number) => {
+    if (ms < 1) return '<1ms';
+    if (ms < 1000) return `${Math.round(ms)}ms`;
+    return `${(ms / 1000).toFixed(2)}s`;
+  };
 
   return (
     <div className="h-full w-full rounded-xl border border-white/[0.06] overflow-hidden bg-[#0f0f11] flex flex-col">
@@ -73,7 +84,7 @@ export default function ConsoleOutput({ result, isLoading }: ConsoleOutputProps)
           <button
             onClick={() => setActiveTab('console')}
             className={cn(
-              'flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium transition-colors',
+              'flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium transition-colors relative',
               activeTab === 'console'
                 ? 'bg-white/[0.06] text-zinc-200'
                 : 'text-zinc-500 hover:text-zinc-400'
@@ -81,25 +92,50 @@ export default function ConsoleOutput({ result, isLoading }: ConsoleOutputProps)
           >
             <Terminal size={12} />
             Console
+            {hasConsoleOutput && activeTab !== 'console' && (
+              <span className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full" />
+            )}
           </button>
         </div>
 
-        {/* Summary badge */}
-        {hasResults && (
-          <div className="ml-auto flex items-center gap-1.5 text-xs font-mono">
-            <span className={result!.passed ? 'text-green-400' : 'text-red-400'}>
-              {result!.passedTests}
-            </span>
-            <span className="text-zinc-600">/ {result!.totalTests} passed</span>
-          </div>
-        )}
+        {/* Right side: Summary + Actions */}
+        <div className="ml-auto flex items-center gap-3">
+          {/* Total execution time */}
+          {result?.totalDuration != null && (
+            <div className="flex items-center gap-1 text-[10px] text-zinc-600 font-mono">
+              <Timer size={10} />
+              {formatTime(result.totalDuration)}
+            </div>
+          )}
 
-        {isLoading && (
-          <div className="ml-auto flex items-center gap-2 text-xs text-zinc-500">
-            <div className="w-3 h-3 border-[1.5px] border-blue-500/30 border-t-blue-500 rounded-full animate-spin" />
-            Running...
-          </div>
-        )}
+          {/* Test summary badge */}
+          {hasResults && (
+            <div className="flex items-center gap-1.5 text-xs font-mono">
+              <span className={result!.passed ? 'text-green-400' : 'text-red-400'}>
+                {result!.passedTests}
+              </span>
+              <span className="text-zinc-600">/ {result!.totalTests} passed</span>
+            </div>
+          )}
+
+          {/* Clear button */}
+          {(result || hasConsoleOutput) && onClear && (
+            <button
+              onClick={onClear}
+              className="text-zinc-600 hover:text-zinc-400 transition-colors p-1 rounded hover:bg-white/[0.04]"
+              title="Clear output"
+            >
+              <Trash2 size={12} />
+            </button>
+          )}
+
+          {isLoading && (
+            <div className="flex items-center gap-2 text-xs text-zinc-500">
+              <div className="w-3 h-3 border-[1.5px] border-blue-500/30 border-t-blue-500 rounded-full animate-spin" />
+              Running...
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Content */}
@@ -212,38 +248,65 @@ export default function ConsoleOutput({ result, isLoading }: ConsoleOutputProps)
           </div>
         )}
 
-        {/* Error message without test results */}
-        {activeTab === 'tests' && !hasResults && result?.stderr && (
+        {/* Error without test results */}
+        {activeTab === 'tests' && !hasResults && result?.error && (
           <div className="rounded-lg border border-red-500/15 bg-red-500/[0.03] p-3">
             <div className="flex items-center gap-2 mb-2">
               <XCircle className="w-3.5 h-3.5 text-red-400" />
               <span className="text-xs font-medium text-red-400">Error</span>
             </div>
             <pre className="text-red-300/80 text-xs font-mono whitespace-pre-wrap">
-              {result.stderr}
+              {result.error}
             </pre>
           </div>
         )}
 
         {/* Console Tab */}
         {activeTab === 'console' && (
-          <div className="font-mono text-xs">
+          <div className="font-mono text-xs space-y-0.5">
             {hasConsoleOutput ? (
-              <>
-                {result!.stdout && (
-                  <pre className="text-zinc-300 whitespace-pre-wrap leading-relaxed">
-                    {result!.stdout}
-                  </pre>
-                )}
-                {result!.stderr && (
-                  <pre className="text-red-400/80 whitespace-pre-wrap mt-2 pt-2 border-t border-white/[0.04]">
-                    {result!.stderr}
-                  </pre>
-                )}
-              </>
+              result!.consoleEntries.map((entry: ConsoleEntry, i: number) => {
+                const style = LEVEL_STYLES[entry.level] || LEVEL_STYLES.log;
+                return (
+                  <div
+                    key={i}
+                    className={cn(
+                      'flex items-start gap-2 px-2 py-1 rounded',
+                      style.bg,
+                      style.border,
+                    )}
+                  >
+                    {/* Timestamp */}
+                    <span className="text-[10px] text-zinc-600 tabular-nums flex-shrink-0 mt-px select-none">
+                      +{formatTime(entry.timestamp)}
+                    </span>
+
+                    {/* Level icon */}
+                    {style.icon}
+
+                    {/* Values */}
+                    <div className={cn('flex-1 flex flex-wrap gap-x-2', style.text)}>
+                      {entry.args.map((arg, j) => (
+                        <ConsoleValue key={j} value={arg} />
+                      ))}
+                    </div>
+                  </div>
+                );
+              })
             ) : (
               <div className="h-full flex items-center justify-center text-zinc-600 py-8">
                 No console output
+              </div>
+            )}
+
+            {/* Show errors in console tab too */}
+            {result?.error && (
+              <div className={cn(
+                'flex items-start gap-2 px-2 py-1 rounded mt-1',
+                'bg-red-500/[0.04] border-l-2 border-l-red-500/30'
+              )}>
+                <XCircle size={10} className="text-red-400 flex-shrink-0 mt-0.5" />
+                <span className="text-red-300">{result.error}</span>
               </div>
             )}
           </div>

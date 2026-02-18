@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useOthers, useSelf } from '@liveblocks/react/suspense';
+import { useOthers, useSelf, useRoom } from '@liveblocks/react/suspense';
 import { motion, AnimatePresence } from 'framer-motion';
 
 class AvatarErrorBoundary extends React.Component<
@@ -118,9 +118,11 @@ function AvatarStack() {
 }
 
 export default function CollaborationAvatars() {
-  return (
-    <AvatarErrorBoundary>
-      <AvatarStack />
-    </AvatarErrorBoundary>
-  );
+  try {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useRoom();
+    return <AvatarStack />;
+  } catch {
+    return null;
+  }
 }
