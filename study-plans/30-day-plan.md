@@ -55,7 +55,7 @@
   - `easy-17-valid-anagram` (03-hash-maps) [x]
   - `easy-04-first-unique-character` (03-hash-maps) [x]
 
-**Day 4: Hash Maps Frequency Patterns**
+**Day 4: Hash Maps Frequency Patterns** [x]
 
 - Pattern: Hash Maps — pattern matching, character mapping
 - Problems:
@@ -64,28 +64,28 @@
   - `easy-18-word-pattern` (03-hash-maps) [x]
   - `easy-14-single-number` (03-hash-maps) [x]
 
-**Day 5: Hash Maps Easy to Medium**
+**Day 5: Hash Maps Easy to Medium** [x]
 
-- Pattern: Hash Maps — grouping, mathematical lookups
+- Pattern: Hash Maps — grouping, mathematical lookups []
 - Problems:
   - `easy-09-majority-element` (03-hash-maps) [x]
   - `easy-05-happy-number` (03-hash-maps) [x]
-  - `easy-06-intersection-arrays` (03-hash-maps)
-  - `medium-04-group-anagrams` (03-hash-maps) — classic interview question
+  - `easy-06-intersection-arrays` (03-hash-maps) [x]
+  - `medium-04-group-anagrams` (03-hash-maps) — classic interview question [x]
 
 **Day 6: Sliding Window Introduction**
 
 - Study: Read `patterns/sliding-window.md`
 - Pattern: Sliding Window — fixed-size window basics
 - Problems:
-  - `easy-04-max-sum-subarray-k` (02-sliding-window)
-  - `easy-01-average-subarrays-k` (02-sliding-window)
-  - `easy-02-contains-duplicate-ii` (02-sliding-window)
+  - `easy-04-max-sum-subarray-k` (02-sliding-window) [x]
+  - `easy-01-average-subarrays-k` (02-sliding-window) [x]
+  - `easy-02-contains-duplicate-ii` (02-sliding-window) [x]
 
 **Day 7: Review Day**
 
 - Problems (lighter load):
-  - `easy-03-diet-plan-performance` (02-sliding-window)
+  - `easy-03-diet-plan-performance` (02-sliding-window)[x]
   - `easy-10-missing-number` (03-hash-maps)
 - Activity: Re-solve any problem from Days 3-6 that felt shaky
 - Review: Hash maps and sliding window pattern guides

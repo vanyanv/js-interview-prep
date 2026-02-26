@@ -8,7 +8,7 @@ Pattern: Fixed Window Sliding Window
 A dieter consumes calories[i] calories on the i-th day. Given an integer k, for every consecutive sequence of k days (calories[i], calories[i+1], ..., calories[i+k-1] for all 0 <= i <= n-k), they look at T, the total calories consumed during that sequence of k days (calories[i] + calories[i+1] + ... + calories[i+k-1]):
 
 - If T < lower, they performed poorly and lose 1 point
-- If T > upper, they performed poorly and lose 1 point
+- If T > upper, they performed well and gain 1 point
 - Otherwise, they performed normally and their points do not change
 
 Initially, the dieter has zero points. Return the total number of points the dieter has after dieting for calories.length days.
@@ -19,19 +19,19 @@ Example 1:
   Input: calories = [1,2,3,4,5], k = 1, lower = 3, upper = 3
   Output: 0
   Explanation: Since k = 1, we consider each element individually.
-  points = 0 because [1] < 3 (lose 1 point) then [2] < 3 (lose 1 point) then [3] is between 3 and 3 (no change) then [4] > 3 (lose 1 point) then [5] > 3 (lose 1 point).
+  [1] < 3 (lose 1) + [2] < 3 (lose 1) + [3] no change + [4] > 3 (gain 1) + [5] > 3 (gain 1) = 0
 
 Example 2:
   Input: calories = [3,2], k = 2, lower = 0, upper = 1
   Output: 1
   Explanation: Since k = 2, we consider subarrays of length 2.
-  points = 1 because [3,2] with total 5 > 1 (lose 1 point).
+  [3,2] with total 5 > 1 (gain 1 point).
 
 Example 3:
   Input: calories = [6,5,0,0], k = 2, lower = 1, upper = 5
-  Output: -1
+  Output: 0
   Explanation:
-  [6,5] with total 11 > 5 (lose 1 point)
+  [6,5] with total 11 > 5 (gain 1 point)
   [5,0] with total 5 = 5 (no change)
   [0,0] with total 0 < 1 (lose 1 point)
 
@@ -47,7 +47,7 @@ Pattern Notes:
   - Fixed window sliding window of size k
   - Calculate sum of first window, then slide by removing first and adding next element
   - For each window sum, compare with lower and upper bounds to update points
-  - Negative points are allowed (dieter can have negative performance)
+  - T < lower subtracts a point, T > upper adds a point
 */
 
 export const functionName = 'dietPlanPerformance';
@@ -63,11 +63,11 @@ export const tests = [
   },
   {
     input: [[6,5,0,0], 2, 1, 5],
-    expected: -1
+    expected: 0
   },
   {
     input: [[1,2,3,4,5,6], 3, 10, 15],
-    expected: -4
+    expected: -2
   },
   {
     input: [[10,10,10,10], 2, 15, 25],
@@ -75,7 +75,7 @@ export const tests = [
   },
   {
     input: [[1,1,1,1,1], 5, 3, 7],
-    expected: -1
+    expected: 0
   },
   {
     input: [[5,5,5,5,5], 3, 12, 18],
@@ -99,7 +99,7 @@ export const tests = [
   },
   {
     input: [[1,2,3,4,5,6,7,8,9,10], 2, 5, 12],
-    expected: -4
+    expected: 3
   }
 ];
 
@@ -121,9 +121,8 @@ function dietPlanPerformance(calories, k, lower, upper) {
     }
 
     // Check first window performance
-    if (windowSum < lower || windowSum > upper) {
-        points--;
-    }
+    if (windowSum < lower) points--;
+    else if (windowSum > upper) points++;
 
     // Slide the window and check performance
     for (let i = k; i < calories.length; i++) {
@@ -131,9 +130,8 @@ function dietPlanPerformance(calories, k, lower, upper) {
         windowSum = windowSum - calories[i - k] + calories[i];
 
         // Check current window performance
-        if (windowSum < lower || windowSum > upper) {
-            points--;
-        }
+        if (windowSum < lower) points--;
+        else if (windowSum > upper) points++;
     }
 
     return points;

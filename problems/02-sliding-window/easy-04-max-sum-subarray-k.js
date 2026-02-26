@@ -92,7 +92,11 @@ export const tests = [
   {
     input: [[1, 2], 2],
     expected: 3
-  }
+  },
+  {
+    input: [[1, 10, 15, 2, 3, 2], 3],
+    expected: 27,
+  },
 ];
 
 /**

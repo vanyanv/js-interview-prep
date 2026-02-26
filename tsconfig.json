@@ -9,8 +9,9 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "lib": ["ES2022"]
+    "lib": ["ES2022"],
+    "types": ["vitest/globals"]
   },
-  "include": ["solutions/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["solutions/**/*.ts", "__tests__/**/*.ts", "scripts/**/*.ts"],
+  "exclude": ["node_modules", "js-interview-practice"]
 }
